@@ -1,4 +1,5 @@
 
+
 import "../App.css";
 
 function HomePage() {
@@ -7,6 +8,7 @@ function HomePage() {
      <h2> hi</h2>
     </div>
   );
+
 }
 
 export default HomePage;
