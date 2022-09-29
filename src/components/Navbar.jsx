@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-
+import { Button } from "react-bootstrap";
 // import { useContext } from "react";                     
 
 function NavbarGlobal() {
@@ -11,6 +11,7 @@ function NavbarGlobal() {
     <Navbar>
      <Container>
       <Link to="/">Good Times</Link>
+
       {/* {isLoggedIn && (
         <>
           <Link to="/profile"><button>Profile</button></Link>        

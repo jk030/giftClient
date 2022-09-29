@@ -1,13 +1,10 @@
-import { useState } from "react";
-import axios from "axios";
-
 // const API_URL = "http://localhost:5005";
 
-function RecipientList(props) {
+function RecipientList({RecipientCard}) {
  
 
   return (
-    <div className="AddGiftList">
+    <div className="RecipientList">
       <h3>List:</h3>
 
       <div> 
