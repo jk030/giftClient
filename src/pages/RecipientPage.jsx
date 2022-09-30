@@ -1,4 +1,4 @@
-function ListPage () {
+function RecipientPage () {
 
 return(
     <div className="list">
@@ -7,4 +7,4 @@ return(
 )
 }
 
-export default ListPage 
+export default RecipientPage 
