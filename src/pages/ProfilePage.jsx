@@ -1,20 +1,25 @@
+import { useState, useEffect, useParams } from "react";
 import RecipientCard from "../components/RecipientCard"
-// import {AuthContext} from ...
 import React from "react";
 import axios from "axios";
-import { Button } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
-import { useState, useEffect } from "react";
-import RecipientCard from "../components/RecipientCard";
+const API_URL = "http://localhost:5005";
+
 
 function ProfilePage(props) {
-  const [recipientInfo, setRecipientInfo] = useState([]); 
+  const [recipientInfo, setRecipientInfo] = useState(null); 
+  const { profiletId } = useParams();
   
   const getRecipientInfo = () => {
-    //   const storedToken = localStorage.getItem("authToken");
+      const storedToken = localStorage.getItem("authToken");
         axios
-        .get(`${process.env.REACT_APP_API_URL}/profile`)// { headers: { Authorization: `Bearer ${storedToken}` } })
-        .then((response) => setRecipientInfo(response.data))
+        .get(`${process.env.API_URL}/profile/${profiletId}`,
+      { headers: { Authorization: `Bearer ${storedToken}` } })
+        .then((response) => {
+          const oneRecipient = response.data;
+          setRecipientInfo(oneRecipient)
+          })
         .catch((error) => console.log(error));
     };
 
@@ -25,20 +30,20 @@ function ProfilePage(props) {
   
     return (
       <div className="Profile">
-      <div className="ProfileInfo"> 
-           {/* {user} --> wait for Auth context  */}
-      </div>
-      <div className="GiftList" > 
-      { recipientInfo.map((info) => {
-        return (<RecipientCard key={info._id} name={info.name} img={info.personPicture} />)
-      })}
-      </div>
+        <div className="ProfileInfo"> 
+            <h1> Welcome back! </h1> 
+        </div>
+        <div className="GiftList" > 
+        { recipientInfo.map((info) => {
+          return (<RecipientCard key={info._id} name={info.name} img={info.personPicture} />)
+        })}
+        </div>
 
-      <h2> New Event? Create a new List! </h2>
-      <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button>
+        <h2> New Event? Create a new List! </h2>
+        <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button>
       </div>
     );
-  }
+}
   
   export default ProfilePage;
 
