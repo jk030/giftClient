@@ -1,46 +1,34 @@
-import { useState, useEffect, useParams } from "react";
 import RecipientCard from "../components/RecipientCard"
 import React from "react";
-import axios from "axios";
+import { useContext } from "react";
 import { Button } from "react-bootstrap";
+import {AuthContext} from '../context/auth.context';
 
-const API_URL = "http://localhost:5005";
 
 
 function ProfilePage(props) {
-  const [recipientInfo, setRecipientInfo] = useState(null); 
-  const { profiletId } = useParams();
-  
-  const getRecipientInfo = () => {
-      const storedToken = localStorage.getItem("authToken");
-        axios
-        .get(`${process.env.API_URL}/profile/${profiletId}`,
-      { headers: { Authorization: `Bearer ${storedToken}` } })
-        .then((response) => {
-          const oneRecipient = response.data;
-          setRecipientInfo(oneRecipient)
-          })
-        .catch((error) => console.log(error));
-    };
+  const { name } = useContext(AuthContext);
 
-    useEffect(() => {
-      getRecipientInfo();
-    }, [] );
-  
-  
     return (
       <div className="Profile">
-        <div className="ProfileInfo"> 
-            <h1> Welcome back! </h1> 
-        </div>
-        <div className="GiftList" > 
-        { recipientInfo.map((info) => {
-          return (<RecipientCard key={info._id} name={info.name} img={info.personPicture} />)
-        })}
+
+        <div className="Box1ProfileInfo"> 
+        <h1 className="layer1"> Welcome back {name}! </h1> 
+            <div className="parent">
+              <img className="image1" src="/Img/image 22.png" alt="gift" width={300} />
+              <img className="image2" src="/Img/Rectangle 19.png" alt="gift" width={400} />
+            </div>
+          
         </div>
 
+        <div className="Box2GiftList" > 
+        <h1> List: </h1>
+        <RecipientCard />
+       
+
         <h2> New Event? Create a new List! </h2>
-        <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button>
+        <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
+        </div>
       </div>
     );
 }

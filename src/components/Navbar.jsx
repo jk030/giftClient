@@ -8,9 +8,10 @@ function NavbarGlobal() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   return (
-    <Navbar>
-     <Container>
-      <Link to="/">Good Times</Link>
+    
+    <Navbar className="navbar navbar-light bg-light">
+     <Container className="navbar-brand navbar-expand-lg">
+      <Link className="GoodTimes" to="/">Good Times</Link>
 
       {isLoggedIn && (
         <>
