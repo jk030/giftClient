@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Link
 import axios from "axios";
 
 function SignupPage(props) {
@@ -18,8 +18,7 @@ function SignupPage(props) {
     e.preventDefault();
     const requestBody = { email, password, userName };
 
-    // TODO: here the API URL is hardcoded as the .env URL is not being recognized.
-    axios.post('http://localhost:5005/auth/signup', requestBody)
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
         .then((response) => {
           console.log(requestBody)
             console.log(response)
