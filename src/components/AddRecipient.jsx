@@ -32,7 +32,7 @@ function AddRecipient(props) {
       <h3>Add Recipient</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
+        <label>Name:</label>
         <input
           type="text"
           name="name"
