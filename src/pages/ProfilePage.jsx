@@ -14,6 +14,7 @@ import { useState, useEffect } from "react";
 function ProfilePage(props) {
   // const { user } = useContext(AuthContext);
   const {userId} = useParams();
+
   const [userProfile, setUserProfile] = useState({})
 
   const getUserInfo = () => {
@@ -36,6 +37,7 @@ function ProfilePage(props) {
 
     return (
       <div className="Profile">
+
         <div className="Box1ProfileInfo"> 
         {/* <h1 className="layer1"> Welcome back {user._id}! </h1>  */}
             <div className="parent">
