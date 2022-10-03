@@ -1,28 +1,25 @@
 import React from "react";
 import {useParams} from "react-router-dom"
 import axios from "axios";
-//import { Button } from "react-router-dom";
-import {Button} from "react-bootstrap"
+// import { Button } from "react-router-dom";
+import {Button } from "react-bootstrap"
+import { Link } from "react-router-dom";
+
 
 import { useState, useEffect } from "react";
 
-// import { useContext } from "react";
-
-// import {AuthContext} from '../context/auth.context';
-
-
 function ProfilePage(props) {
-  // const { user } = useContext(AuthContext);
+
   const {userId} = useParams();
   const [userProfile, setUserProfile] = useState({})
-
+  console.log(userProfile)
+  
   const getUserInfo = () => {
       axios
       .get(`${process.env.REACT_APP_API_URL}/profilePage/${userId}`)
       .then((response) => {
         const userDetails = response.data;
         console.log(userDetails)
-        // this console.log not works  
         setUserProfile(userDetails)
         })
       .catch((error) => console.log(error));
@@ -37,7 +34,7 @@ function ProfilePage(props) {
     return (
       <div className="Profile">
         <div className="Box1ProfileInfo"> 
-        {/* <h1 className="layer1"> Welcome back {user._id}! </h1>  */}
+        <h1 className="layer1"> Welcome back {userProfile.userName}! </h1> 
             <div className="parent">
               <img className="image1" src="/Img/image 22.png" alt="gift" width={300} />
               <img className="image2" src="/Img/Rectangle 19.png" alt="gift" width={400} />
@@ -45,9 +42,14 @@ function ProfilePage(props) {
         </div>
         <div className="Box2GiftList" > 
         <h1> List: </h1>
-        { Object.keys(userProfile).length !== 0 && userProfile.recipients.map(recipient => {
+        { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
           return ( 
+            <div> 
           <h4>{recipient.name}</h4>
+          <img src={recipient.imageRecipient} width={200}/>
+          <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+          </div> 
+
           )
         })
 
