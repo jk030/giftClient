@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";                  
 
 function NavbarGlobal() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+
 
   return (
    <div> 
@@ -17,13 +18,14 @@ function NavbarGlobal() {
          <Link className="GoodTimes" to="/">Good Times</Link>
         </div>
 
-        <div className="col2">
-          {isLoggedIn && (
-            <>
-              <Link to="/profilePage/:id"><button className="navLink">Profile</button></Link>        
-              <button onClick={logOutUser}>Logout</button>
-            </>
-          )}
+
+      {isLoggedIn && (
+        <>
+          <Link to={`/profilePage/${user._id}`}><button>Profile</button></Link>        
+          <button onClick={logOutUser}>Logout</button>
+        </>
+      )}
+
 
           {!isLoggedIn && (
             <>
