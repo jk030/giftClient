@@ -5,7 +5,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";                  
 
 function NavbarGlobal() {
-  const { isLoggedIn, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+
 
   return (
    <div> 
@@ -15,7 +16,7 @@ function NavbarGlobal() {
 
       {isLoggedIn && (
         <>
-          <Link to="/profilePage"><button>Profile</button></Link>        
+          <Link to={`/profilePage/${user._id}`}><button>Profile</button></Link>        
           <button onClick={logOutUser}>Logout</button>
         </>
       )}

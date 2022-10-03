@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/profilePage" element={<ProfilePage/>}/>
+        <Route path="/profilePage/:userId" element={<ProfilePage/>}/>
 
         {/* <Route path="/listPage" element={<ListPage/>}/>  */}
         <Route path="/recipientPage" element={<RecipientPage/>}/>
