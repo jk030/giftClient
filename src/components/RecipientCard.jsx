@@ -34,7 +34,7 @@ function RecipientCard () {
       return (
         <div> 
         <h1>{info.name} </h1>
-        <img src={info.picturePerson} alt="Recipient pictrure" width="100"/>
+        <img src={info.imageRecipient} alt="Recipient pictrure" width="100"/>
         <Link to={`/listPage`}></Link>
         </div>
     )
