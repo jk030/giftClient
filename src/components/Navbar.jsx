@@ -15,7 +15,7 @@ function NavbarGlobal() {
 
       {isLoggedIn && (
         <>
-          <Link to="/profile"><button>Profile</button></Link>        
+          <Link to="/profilePage"><button>Profile</button></Link>        
           <button onClick={logOutUser}>Logout</button>
         </>
       )}

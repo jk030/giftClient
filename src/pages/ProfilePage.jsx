@@ -2,8 +2,8 @@ import RecipientCard from "../components/RecipientCard"
 import React from "react";
 
 import axios from "axios";
-import { Button } from "react-router-dom";
-
+//import { Button } from "react-router-dom";
+import {Button} from "react-bootstrap"
 
 import { useState, useEffect } from "react";
 
@@ -22,7 +22,7 @@ function ProfilePage(props) {
 
 
       <h2> New Event? Create a new List! </h2>
-      {/* <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button> */}
+      <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button>
 
         <div className="Box1ProfileInfo"> 
         <h1 className="layer1"> Welcome back {name}! </h1> 

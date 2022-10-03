@@ -1,5 +1,5 @@
 import React from "react";
-//import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage.jsx"
@@ -7,12 +7,12 @@ import ProfilePage from "./pages/ProfilePage"
 import SignupPage from "./pages/SignupPage"
 import RecipientPage from "./pages/RecipientPage"
 
-// import routes from "./config/routes";git 
+// import routes from "./config/routes";
 
 function App() {
   return (
     <div className="App">
-     {/* <Navbar/>  */}
+     <Navbar/> 
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
