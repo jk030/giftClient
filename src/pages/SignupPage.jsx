@@ -33,49 +33,39 @@ function SignupPage(props) {
   return (
     <div> 
        <img className="imgSignUpPage" src="/Img/asma-alrashed-2ilpjYv8gXo-unsplash.jpg" alt="present"/>
-    <div className="SignupPage-Container">
-      <p className="headline">Create an account </p>
-      <p className="Details">Please enter your details.</p>
-
-      <form onSubmit={handleSignupSubmit} >
-    
-      <label>Username *</label>
-        <input 
-          type="text"
-          name="userName"
-          value={userName}
-          onChange={handleUserName}
-        />
-          
-        <br />
-
-
-        <label>Email *</label>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-        />
-   
-        <br />
-
-        <label>Password *</label>
-        <input 
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <button className="signUpbtn" type="submit">Create account</button>
-      </form>
-
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
-
-      <p className="Details">Already have account?</p>
-      <a className="signUpbtn" href="/login">Login</a>
-    </div>
+            <div className="SignupPage-Container">
+              <p className="headline">Create an account </p>
+              <p className="Details">Please enter your details.</p>
+              <form onSubmit={handleSignupSubmit} >
+              <label className="Details2"> Username *</label>
+                <input 
+                  type="text"
+                  name="userName"
+                  value={userName}
+                  onChange={handleUserName}
+                />     
+                <br />
+                <label className="Details2" >Email *</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={handleEmail}
+                />
+                <br />
+                <label className="Details2" >Password *</label>
+                <input 
+                  type="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePassword}
+                />
+                <button className="signUpbtn" type="submit">Create account</button>
+              </form>
+              { errorMessage && <p className="error-message">{errorMessage}</p> }
+              <p className="Details">Already have account?</p>
+              <a className="signUpbtn" href="/login">Login</a>
+            </div>
     </div>
   )
 }

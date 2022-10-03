@@ -9,9 +9,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function ProfilePage(props) {
-
   const {userId} = useParams();
-
   const [userProfile, setUserProfile] = useState({})
   console.log(userProfile)
   
@@ -31,14 +29,8 @@ function ProfilePage(props) {
     getUserInfo();
   }, [] );
 
-
     return (
       <div className="Profile">
-        
-        {/* <RecipientList refreshList={getProfileDetails} /> */}
-        
-    {/* not sure what we iterate over */}
-
         <div className="Box1ProfileInfo"> 
         <h1 className="layer1"> Welcome back {userProfile.userName}! </h1> 
             <div className="parent">
@@ -55,10 +47,8 @@ function ProfilePage(props) {
           <img src={recipient.imageRecipient} width={200}/>
           <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
           </div> 
-
           )
         })
-
         }
         <h2> New Event? Create a new List! </h2>
         <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
