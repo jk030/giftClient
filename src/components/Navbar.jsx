@@ -8,7 +8,7 @@ function NavbarGlobal() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   return (
-    
+   <div> 
     <Navbar className="navbar navbar-light bg-light">
      <Container className="navbar-brand navbar-expand-lg">
       <Link className="GoodTimes" to="/">Good Times</Link>
@@ -28,6 +28,8 @@ function NavbarGlobal() {
       )}
       </Container>
     </Navbar>
+    <img className="imgNavbar" src="/Img/annie-spratt-_XdU9Q5iFRE-unsplash.jpg"/>
+    </div> 
   );
 }
 
