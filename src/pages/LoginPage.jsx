@@ -35,39 +35,35 @@ function LoginPage(props) {
   };
   
   return (
-    <div className="LoginPage">
-      
-      <p className="headline">Login</p>
-
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input 
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleEmail}
-        />
-
-        <br />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <br />
-
-        <button className="signUpbtn" type="submit">Login</button>
-      </form>
-      { errorMessage && <p className="error-message">{errorMessage}</p> }
-
-      <p>Don't have an account yet?</p>
-      <Link className="signUpbtn" to={"/signup"}> Sign Up</Link>
+    <div >
+          <img className="imgSignUpPage" src="/Img/annie-spratt-7jKyakBu3vM-unsplash.jpg" alt="present"/>
+              <div className="SignupPage-Container">
+                  <p className="headline">Login</p>
+                  <form onSubmit={handleLoginSubmit}>
+                    <label>Email:</label>
+                    <input 
+                      type="email"
+                      name="email"
+                      value={email}
+                      onChange={handleEmail}
+                    />
+                    <br />
+                    <label>Password:</label>
+                    <input
+                      type="password"
+                      name="password"
+                      value={password}
+                      onChange={handlePassword}
+                    />
+                    <button className="signUpbtn" type="submit">Login</button>
+                  </form>
+                  { errorMessage && <p className="error-message">{errorMessage}</p> }
+                    <p className="Details" >Don't have an account yet?</p>
+                    <Link className="signUpbtn" to={"/signup"}> Sign Up</Link>
+              </div>
     </div>
   )
 }
 
 export default LoginPage;
+
