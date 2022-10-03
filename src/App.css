@@ -4,11 +4,38 @@
 }
 
 .imgNavbar{
+  background: url(../public/Img/annie-spratt-_XdU9Q5iFRE-unsplash.jpg);
   background-repeat: no-repeat;
-  background-size: auto;
-  width: 1600px;
-  height: 10vh;
-  /* background: url(/annie-spratt-_XdU9Q5iFRE-unsplash.jpg) */
+  width: 100%;
+  height: 150px;
+  background-size: cover;
+}
+
+.GoodTimes{
+  font-size: 50px;
+  color: #B99A75;  
+  text-decoration: none;
+  letter-spacing: 3px;
+}
+
+.navLink{
+  color: #B99A75;  
+  background-color: #fff;
+  border: #fff;
+}
+
+.container{
+  display: flex;
+}
+
+.col1{
+  margin-left: 50vh;
+}
+
+.col2{
+  float: right;
+  margin-top: 3vh;
+  margin-right: 50vh; 
 }
 
 .SignupPage-Container{
@@ -106,10 +133,9 @@ label{
   float: right;
   margin-right: 30vh;
   margin-top: -60px;
-  margin-bottom: 30vh;
+  margin-bottom: 5vh;
   height: auto;
   width: 400px
-
 }
 .App-logo {
   height: 40vmin;
