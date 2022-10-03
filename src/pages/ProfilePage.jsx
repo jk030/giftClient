@@ -8,7 +8,7 @@ function ProfilePage() {
     return (
       <div className="Profile">
         
-        <RecipientList refreshList={getProfileDetails} />
+        {/* <RecipientList refreshList={getProfileDetails} /> */}
         
     {/* not sure what we iterate over */}
 
