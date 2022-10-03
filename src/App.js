@@ -1,18 +1,18 @@
 import React from "react";
 //import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
-// import Navbar from './components/Loading/Navbar';
 import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage.jsx"
 import ProfilePage from "./pages/ProfilePage"
-import RecipientPage from "./pages/RecipientPage.jsx"
 import SignupPage from "./pages/SignupPage"
-// import routes from "./config/routes";
+import RecipientPage from "./pages/RecipientPage"
+
+// import routes from "./config/routes";git 
 
 function App() {
   return (
     <div className="App">
-    {/* <Navbar/> */}
+     {/* <Navbar/>  */}
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
@@ -20,6 +20,9 @@ function App() {
 
         {/* <Route path="/listPage" element={<ListPage/>}/>  */}
         <Route path="/recipientPage" element={<RecipientPage/>}/>
+
+        {/* <Route path="/listPage" element={<ListPage/>}/>  */}
+
         <Route path="/signup" element={<SignupPage/>}/>
 
       </Routes>

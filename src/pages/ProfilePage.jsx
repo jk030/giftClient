@@ -1,44 +1,50 @@
 import RecipientCard from "../components/RecipientCard"
-// import {AuthContext} from ...
 import React from "react";
+
 import axios from "axios";
-//import { Button } from "react-router-dom";
+import { Button } from "react-router-dom";
 
 
 import { useState, useEffect } from "react";
 
-function ProfilePage(props) {
-  const [recipientInfo, setRecipientInfo] = useState([]); 
-  
-  const getRecipientInfo = () => {
-    //   const storedToken = localStorage.getItem("authToken");
-        axios
-        .get(`${process.env.REACT_APP_API_URL}/profile`)// { headers: { Authorization: `Bearer ${storedToken}` } })
-        .then((response) => setRecipientInfo(response.data))
-        .catch((error) => console.log(error));
-    };
+import { useContext } from "react";
 
-    useEffect(() => {
-      getRecipientInfo();
-    }, [] );
-  
-  
+import {AuthContext} from '../context/auth.context';
+
+
+
+
+function ProfilePage(props) {
+  const { name } = useContext(AuthContext);
+
     return (
       <div className="Profile">
-      <div className="ProfileInfo"> 
-           {/* {user} --> wait for Auth context  */}
-      </div>
-      <div className="GiftList" > 
-      { recipientInfo.map((info) => {
-        return (<RecipientCard key={info._id} name={info.name} img={info.personPicture} />)
-      })}
-      </div>
+
 
       <h2> New Event? Create a new List! </h2>
       {/* <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button> */}
+
+        <div className="Box1ProfileInfo"> 
+        <h1 className="layer1"> Welcome back {name}! </h1> 
+            <div className="parent">
+              <img className="image1" src="/Img/image 22.png" alt="gift" width={300} />
+              <img className="image2" src="/Img/Rectangle 19.png" alt="gift" width={400} />
+            </div>
+          
+        </div>
+
+        <div className="Box2GiftList" > 
+        <h1> List: </h1>
+        <RecipientCard />
+       
+
+        <h2> New Event? Create a new List! </h2>
+        <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
+        </div>
+
       </div>
     );
-  }
+}
   
   export default ProfilePage;
 

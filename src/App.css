@@ -1,7 +1,116 @@
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
 }
 
+.imgNavbar{
+  background-repeat: no-repeat;
+  background-size: auto;
+  width: 1600px;
+  height: 10vh;
+  /* background: url(/annie-spratt-_XdU9Q5iFRE-unsplash.jpg) */
+}
+
+.SignupPage-Container{
+  margin: auto;
+  margin-top: 10vh;
+  margin-left: 20vh;
+  position: relative; 
+  width: 500px;
+  height: 530px;
+}
+
+.LoginPage{
+  margin: auto;
+  margin-top: 10vh;
+  margin-left: 20vh;
+  position: relative; 
+  width: 500px;
+  height: 530px
+}
+
+.headline {
+  font-size: 30px;
+  color: #000;
+  letter-spacing: 6px;
+  text-align: center;
+  margin-top: 120px;
+}
+
+.Details{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #000;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 7px;
+}
+
+.Signup-Form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+input {
+  width: 300px;
+  background: #D9D9D9;
+  width: 65%;
+  color: #000;
+  border: none;
+  padding: 9px;
+  margin: 7px;
+  border-radius: 10px;
+}
+
+input:focus {
+  color: #B99A75;
+  outline: none;
+  font-size: 1em;
+  transition: .8s all ease;
+}
+
+label{
+  letter-spacing: 3px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.signUpbtn{
+  background-color: #363636;
+  color: #F2E5D6;
+  margin-top: 25px;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 10px;
+  font-size: 10px;
+  
+}
+
+.signUpbtn:hover {
+  background: #728d7a;
+  border-color: darken(#728d7a, 5%);
+  transition: background-color 1s ease-out;
+}
+
+.imgSignUpPage{
+  float: right;
+  margin-right: 30vh;
+  margin-top: -60px;
+  margin-bottom: 30vh;
+  height: auto;
+  width: 400px
+
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -19,7 +128,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;  
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -34,5 +143,6 @@
   }
   to {
     transform: rotate(360deg);
-  }
+  }  
+
 }
