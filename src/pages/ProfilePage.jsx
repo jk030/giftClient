@@ -17,13 +17,11 @@ import {AuthContext} from '../context/auth.context';
 function ProfilePage(props) {
   const { name } = useContext(AuthContext);
   const {userId} = useParams();
-  console.log(`these are the params: ${userId}`);
-  console.log(props)
+  //console.log(`these are the params: ${userId}`);
+  //console.log(props)
 
     return (
       <div className="Profile">
-
-      <h2>hi : {userId}</h2>
 
       <h2> New Event? Create a new List! </h2>
       <Button href="/addNewList" type="button" className="btn btn-outline-primary">Add New List</Button>
