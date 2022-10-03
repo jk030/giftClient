@@ -34,6 +34,10 @@ function ProfilePage(props) {
 
     return (
       <div className="Profile">
+        
+        {/* <RecipientList refreshList={getProfileDetails} /> */}
+        
+    {/* not sure what we iterate over */}
 
         <div className="Box1ProfileInfo"> 
         <h1 className="layer1"> Welcome back {userProfile.userName}! </h1> 
