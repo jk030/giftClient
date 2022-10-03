@@ -10,9 +10,14 @@ function NavbarGlobal() {
 
   return (
    <div> 
+
     <Navbar className="navbar navbar-light bg-light">
-     <Container className="navbar-brand navbar-expand-lg">
-      <Link className="GoodTimes" to="/">Good Times</Link>
+    <div className="container">
+     
+        <div className="col1" > 
+         <Link className="GoodTimes" to="/">Good Times</Link>
+        </div>
+
 
       {isLoggedIn && (
         <>
@@ -21,15 +26,17 @@ function NavbarGlobal() {
         </>
       )}
 
-       {!isLoggedIn && (
-        <>
-          <Link to="/login"> <button>Login</button> </Link>
-           <Link to="/signup"> <button>Register</button> </Link>
-        </>
-      )}
-      </Container>
+
+          {!isLoggedIn && (
+            <>
+              <Link to="/login"> <button className="navLink">Login</button> </Link>
+              <Link to="/signup"> <button className="navLink">Register</button> </Link>
+            </>
+          )}
+        </div>
+      </div>
     </Navbar>
-    <img className="imgNavbar" src="/Img/annie-spratt-_XdU9Q5iFRE-unsplash.jpg"/>
+    <img className="imgNavbar"/>
     </div> 
   );
 }
