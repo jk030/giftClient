@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+//import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 // import Navbar from './components/Loading/Navbar';
 import HomePage from "./pages/HomePage"
-import LoginPage from "./pages/LoginPage"
+import LoginPage from "./pages/LoginPage.jsx"
 import ProfilePage from "./pages/ProfilePage"
 import RecipientPage from "./pages/RecipientPage.jsx"
 import SignupPage from "./pages/SignupPage"
@@ -17,12 +17,11 @@ function App() {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/profilePage" element={<ProfilePage/>}/>
-<<<<<<< HEAD
-        <Route path="/listPage" element={<ListPage/>}/> 
-=======
+
+        {/* <Route path="/listPage" element={<ListPage/>}/>  */}
         <Route path="/recipientPage" element={<RecipientPage/>}/>
         <Route path="/signup" element={<SignupPage/>}/>
->>>>>>> 9377bc77e4e931d241e4e8e2c94352a67849c54d
+
       </Routes>
     </div>
   );

@@ -2,10 +2,10 @@ import RecipientCard from "../components/RecipientCard"
 // import {AuthContext} from ...
 import React from "react";
 import axios from "axios";
-import { Button } from "react-router-dom";
+//import { Button } from "react-router-dom";
+
 
 import { useState, useEffect } from "react";
-import RecipientCard from "../components/RecipientCard";
 
 function ProfilePage(props) {
   const [recipientInfo, setRecipientInfo] = useState([]); 
@@ -35,7 +35,7 @@ function ProfilePage(props) {
       </div>
 
       <h2> New Event? Create a new List! </h2>
-      <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button>
+      {/* <Button href="/addNewList" type="button" class="btn btn-outline-primary">Add New List</Button> */}
       </div>
     );
   }

@@ -21,6 +21,7 @@ function SignupPage(props) {
     // TODO: here the API URL is hardcoded as the .env URL is not being recognized.
     axios.post('http://localhost:5005/auth/signup', requestBody)
         .then((response) => {
+          console.log(requestBody)
             console.log(response)
             navigate('/login');
         })
