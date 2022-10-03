@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage"
 import LoginPage from "./pages/LoginPage.jsx"
 import ProfilePage from "./pages/ProfilePage"
 import SignupPage from "./pages/SignupPage"
+import RecipientPage from "./pages/RecipientPage"
 
 // import routes from "./config/routes";
 
@@ -15,8 +16,13 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
-        <Route path="/profilePage" element={<ProfilePage/>}/>
+        <Route path="/profilePage/:userId" element={<ProfilePage/>}/>
+
         {/* <Route path="/listPage" element={<ListPage/>}/>  */}
+        <Route path="/recipientPage" element={<RecipientPage/>}/>
+
+        {/* <Route path="/listPage" element={<ListPage/>}/>  */}
+
         <Route path="/signup" element={<SignupPage/>}/>
 
       </Routes>

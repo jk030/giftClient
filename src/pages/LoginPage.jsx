@@ -26,7 +26,7 @@ function LoginPage(props) {
             console.log('JWT token', response.data.authToken);
             storeToken(response.data.authToken);
             authenticateUser();
-            navigate('/profilePage');
+            navigate(`/profilePage/${response.data.userId}`);
         })
         .catch((error) => {
             const errorDescription = error.response.data.message;
