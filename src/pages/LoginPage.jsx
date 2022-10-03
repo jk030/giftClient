@@ -21,12 +21,12 @@ function LoginPage(props) {
     e.preventDefault();
     const requestBody = { email, password };
 
-    axios.post(`${API_URL}/auth/login`, requestBody)
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, requestBody)
         .then((response) => {
             console.log('JWT token', response.data.authToken);
             storeToken(response.data.authToken);
             authenticateUser();
-            navigate('/profilePage');
+            navigate(`/profilePage/${response.data.userId}`);
         })
         .catch((error) => {
             const errorDescription = error.response.data.message;
@@ -36,7 +36,8 @@ function LoginPage(props) {
   
   return (
     <div className="LoginPage">
-      <h1>Login</h1>
+      
+      <p className="headline">Login</p>
 
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
@@ -59,12 +60,12 @@ function LoginPage(props) {
 
         <br />
 
-        <button type="submit">Login</button>
+        <button className="signUpbtn" type="submit">Login</button>
       </form>
       { errorMessage && <p className="error-message">{errorMessage}</p> }
 
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Link className="signUpbtn" to={"/signup"}> Sign Up</Link>
     </div>
   )
 }

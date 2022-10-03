@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Link
 import axios from "axios";
 
 function SignupPage(props) {
@@ -18,9 +18,9 @@ function SignupPage(props) {
     e.preventDefault();
     const requestBody = { email, password, userName };
 
-    // TODO: here the API URL is hardcoded as the .env URL is not being recognized.
-    axios.post('http://localhost:5005/auth/signup', requestBody)
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, requestBody)
         .then((response) => {
+          console.log(requestBody)
             console.log(response)
             navigate('/login');
         })
@@ -31,21 +31,36 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div> 
+       <img className="imgSignUpPage" src="/Img/asma-alrashed-2ilpjYv8gXo-unsplash.jpg" alt="present"/>
+    <div className="SignupPage-Container">
+      <p className="headline">Create an account </p>
+      <p className="Details">Please enter your details.</p>
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
+      <form onSubmit={handleSignupSubmit} >
+    
+      <label>Username *</label>
         <input 
+          type="text"
+          name="userName"
+          value={userName}
+          onChange={handleUserName}
+        />
+          
+        <br />
+
+
+        <label>Email *</label>
+        <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmail}
         />
-
+   
         <br />
 
-        <label>Password:</label>
+        <label>Password *</label>
         <input 
           type="password"
           name="password"
@@ -53,23 +68,14 @@ function SignupPage(props) {
           onChange={handlePassword}
         />
 
-        <br />
-
-        <label>Username:</label>
-        <input 
-          type="text"
-          name="userName"
-          value={userName}
-          onChange={handleUserName}
-        />
-
-        <button type="submit">Sign Up</button>
+        <button className="signUpbtn" type="submit">Create account</button>
       </form>
 
       { errorMessage && <p className="error-message">{errorMessage}</p> }
 
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      <p className="Details">Already have account?</p>
+      <a className="signUpbtn" href="/login">Login</a>
+    </div>
     </div>
   )
 }
