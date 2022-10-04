@@ -4,6 +4,8 @@ import axios from "axios";
 // import { Button } from "react-router-dom";
 import {Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
+import AddRecipient from "../components/AddRecipient"
+//import RecipientCard from "../components/RecipientCard"
 
 
 import { useState, useEffect } from "react";
@@ -13,7 +15,7 @@ function ProfilePage(props) {
   const {userId} = useParams();
 
   const [userProfile, setUserProfile] = useState({})
-  // console.log(userProfile)
+
   
   const getUserInfo = () => {
       axios
@@ -25,7 +27,7 @@ function ProfilePage(props) {
         })
       .catch((error) => console.log(error));
   };
-  // console.log(getUserInfo)
+
 
   useEffect(() => {
     getUserInfo();
@@ -57,7 +59,7 @@ function ProfilePage(props) {
         <h2> New Event? Create a new List! </h2>
         <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
         </div>
-
+        <AddRecipient id={userId}/>
       </div>
     );
 }

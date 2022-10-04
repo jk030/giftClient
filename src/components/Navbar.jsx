@@ -18,10 +18,12 @@ function NavbarGlobal() {
         </div>
         <div className="Navbar1-2"> 
       {isLoggedIn && (
+
         <div>
           <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a>        
           <button onClick={logOutUser} className="navLink2">Logout</button>
           </div>
+
       )}
       {!isLoggedIn && (
             <div>
