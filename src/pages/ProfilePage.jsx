@@ -83,8 +83,3 @@ function ProfilePage(props) {
 }
   
   export default ProfilePage;
-
-
-  // 1. axios -> liste von Recipiernt 
-  // 2. map 
-  // 3. pro Recipient eine Card 
