@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import {useParams, useNavigate} from "react-router-dom"
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 // import { Button } from "react-router-dom";
@@ -9,16 +10,13 @@ import AddRecipient from "../components/AddRecipient"
 //import RecipientCard from "../components/RecipientCard"
 
 
-import { useState, useEffect } from "react";
 
 function ProfilePage(props) {
-
   const {userId} = useParams();
-
   const [userProfile, setUserProfile] = useState({})
-
   
   const { authenticateUser } = useContext(AuthContext)
+
   const navigate = useNavigate()
 
   const getUserInfo = () => {
@@ -67,8 +65,11 @@ function ProfilePage(props) {
               return ( 
                 <div key={recipient._id}> 
               <h4>{recipient.name}</h4>
-              <img src={recipient.imageRecipient} width={200}/>
-              <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link> <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+
+              <img src={recipient.imageRecipient} alt="image_recipient" width={200} />
+              <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+              <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+
         </div> 
           )
         })
@@ -81,6 +82,8 @@ function ProfilePage(props) {
 
         </div>
 
+        <AddRecipient getUserInfo={getUserInfo} />
+
       </div>
     );
   
@@ -89,6 +92,3 @@ function ProfilePage(props) {
   export default ProfilePage;
 
 
-  // 1. axios -> liste von Recipiernt 
-  // 2. map 
-  // 3. pro Recipient eine Card 
