@@ -76,7 +76,7 @@ function ProfilePage(props) {
 
             <div className="ContainerAddRecipient">
                 <h2> New Event? Create a new List! </h2>
-                <AddRecipient id={userId}/>
+                <AddRecipient id={userId}  getUserInfo={getUserInfo}/>
             </div>
 
         </div>

@@ -11,6 +11,7 @@ function AddRecipient(props) {
   const [ unwanted, setUnwanted ] = useState("");
 
   const { user } = useContext(AuthContext)
+  const {getUserInfo} = props
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,6 +22,7 @@ function AddRecipient(props) {
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/recipients`, requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
+        getUserInfo()
         setName("")
         setPersonalDetails("")
         setPreferences("")
