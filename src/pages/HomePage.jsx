@@ -61,15 +61,14 @@ function HomePage() {
                 value={search}
                 onChange={handleSearch}
               />
-            { filteredRecipient && filteredRecipient.map((info) => {
+            {filteredRecipient.length !== 0 && filteredRecipient.map((info) => {
             return (
-              <div key={info._id}> 
-                <h3>This List is for: {info.name} </h3>
-                <img src={info.imageRecipient} alt="Recipient" width="100"/>
-                {/* {console.log(info.user[0].userName)} */}
-                {info.user.userName && <h4>created by: {info.user.userName}</h4>}
-                <Link to={`/profilePage/${info.user._id}`}> <button className="signUpbtn"> see {info.user.userName}'s profile</button> </Link>
-                <Link to={`/listPage/${info._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+              <div key={info?._id}> 
+                <h3>This List is for: {info?.name} </h3>
+                <img src={info?.imageRecipient} alt="Recipient" width="100"/>
+                {info?.user?.userName && <h4>created by: {info?.user?.userName}</h4>}
+                <Link to={`/profilePage/${info?.user?._id}`}> <button className="signUpbtn"> see {info?.user?.userName}'s profile</button> </Link>
+                <Link to={`/listPage/${info?._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
             </div>
             )
       })}
