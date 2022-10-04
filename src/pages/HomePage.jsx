@@ -41,7 +41,7 @@ function HomePage() {
       )
       setFilteredRecipient(filtered);
     }
-    
+    // eslint-disable-next-line
   }, [search])
 
   return (
