@@ -44,11 +44,7 @@ function HomePage() {
     
   }, [search])
 
-
-
-
   return (
-
     <div>
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
           <div  className="HomePage-Container"> 

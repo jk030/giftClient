@@ -36,7 +36,7 @@ function AddRecipient(props) {
       <h3>Add Recipient</h3>
       
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label className="Details2" >Name:</label>
         <input
           type="text"
           name="name"
@@ -44,34 +44,30 @@ function AddRecipient(props) {
           onChange={(e) => setName(e.target.value)}
         />
 
-        <label>Personal Details:</label>
-        <textarea
+        <label className="Details2" >Personal Details:</label>
+        <input
           type="text"
           name="personalDetails"
           value={personalDetails}
           onChange={(e) => setPersonalDetails(e.target.value)}
         />
 
-        <label>Preferences:</label>
-        <textarea
+        <label className="Details2" >Preferences:</label>
+        <input
           type="text"
           name="preferences"
           value={preferences}
           onChange={(e) => setPreferences(e.target.value)}
         />
 
-        <label>Things they dont want:</label>
-        <textarea
+        <label className="Details2" >Things they dont want:</label>
+        <input
           type="text"
           name="unwanted"
           value={unwanted}
           onChange={(e) => setUnwanted(e.target.value)}
         />
-
-        <Link to="/profilePage">
-          <button>Go Back</button>    
-        </Link>
-        <button type="submit">Save</button>
+        <button className="signUpbtn" type="submit">Save</button>
         
       </form>
     </div>
