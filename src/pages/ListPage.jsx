@@ -8,6 +8,7 @@ import axios from "axios";
 function ListPage (props) {
     const {recipientId} = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
+    // const [giftDetails, setGiftDetails] = useState({})
 
     console.log(recipientInfo)
 
@@ -24,50 +25,31 @@ function ListPage (props) {
   
     useEffect(() => {
       getRecipientInfo();
+      // eslint-disable-next-line
     }, [] );
-
 
 return (
     <div className="list">
-        <div> 
-            <h2>{recipientInfo.name}</h2>
-            <img src={recipientInfo.imageRecipient} width={200}/> 
-        </div>
-        <div>
-            <p>{recipientInfo.personalDetails}</p>
-        </div>
-        <div>
-            <article>{recipientInfo.preference}</article>
-        </div>
-        <div>
-            <article>{recipientInfo.unwanted}</article>
-        </div> 
 
-            {/* {Object.entries(recipientInfo.gift).map(allGifts => {
-                console.log("this is the ", recipientInfo.gift)
-            return (
-                <div>
-                {!allGifts ? <></> : <>
-            <h2>{allGifts[0].title}</h2> 
-            <h2> {allGifts[0].occasion}</h2>
-            </>}
-                </div>
-            )
-        })} */}
-             
+    <div> 
+    <h2>{recipientInfo.name}</h2>
+    <img src={recipientInfo.imageRecipient} alt="Recipient" width={200}/>
+    </div>
+    <div>
+    <p>{recipientInfo.personalDetails}</p>
+    </div>
+    <div>
+    <article>{recipientInfo.preference}</article>
+    </div>
+    <div>
+    <article>{recipientInfo.unwanted}</article>
+    </div>
 
 
-     
-        {/* {recipientInfo.gifts.map(allGifts => {
-            return (
-                <div>
-                {!allGifts ? <></> : <>
-            <h2>{allGifts[0].title}</h2> 
-            <h2> {allGifts[0].occasion}</h2>
-            </>}
-                </div>
-            )
-        })} */}
+    <div> 
+    <h2>{recipientInfo.name}</h2>
+
+    </div>
 
         <div> 
     {!recipientInfo.gifts ? <></> : <>
@@ -79,8 +61,18 @@ return (
     )
 }
 
-
-
 export default ListPage 
 
 
+
+ {/* {Object.entries(recipientInfo.gift).map(allGifts => {
+                console.log("this is the ", recipientInfo.gift)
+            return (
+                <div>
+                {!allGifts ? <></> : <>
+            <h2>{allGifts[0].title}</h2> 
+            <h2> {allGifts[0].occasion}</h2>
+            </>}
+                </div>
+            )
+        })} */}

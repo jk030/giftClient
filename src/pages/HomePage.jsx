@@ -10,27 +10,45 @@ import {Link} from "react-router-dom"
 
 function HomePage() {
   const [recipientInfo, setRecipientInfo] = useState([]); 
-  console.log(recipientInfo)
+  const [filteredRecipient, setFilteredRecipient] = useState([]); 
   const [search, setSearch] = useState ("")
   const handleSearch = (e) => setSearch(e.target.value);
-  const filtered = recipientInfo.filter(
-  recipient => {
-    return recipient.name.toLowerCase().includes(search.toLowerCase())
-  })
-  const getRecipientInfo = () => {
+
+   const getRecipientInfo = () => {
     const storedToken = localStorage.getItem("authToken");
       axios
       .get(`${process.env.REACT_APP_API_URL}/api/recipients`,{ headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         const allRecipients = response.data;
         setRecipientInfo(allRecipients)
+        setFilteredRecipient(allRecipients)
         })
       .catch((error) => console.log(error));
   };
   useEffect(() => {
     getRecipientInfo();
   }, [] );
+
+  useEffect(()=>{
+    if(search === ""){
+      setFilteredRecipient(recipientInfo);
+    }
+    else {
+      const filtered = recipientInfo.filter(
+        recipient => {
+          return recipient.name.toLowerCase().includes(search.toLowerCase())
+        }
+      )
+      setFilteredRecipient(filtered);
+    }
+    
+  }, [search])
+
+
+
+
   return (
+
     <div>
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
           <div  className="HomePage-Container"> 
@@ -38,29 +56,29 @@ function HomePage() {
           <button className="signUpbtn" href="/signup">Create account</button>
           </div>
 
-     <div className="searchForm">
-     <form >
-     <label>Search for public Lists:</label>
-        <input 
-          type="email"
-          name="search"
-          value={search}
-          onChange={handleSearch}
-        />
-      <button className="signUpbtn" type="submit">Search</button>
-     </form>
-     { filtered.map((info) => {
-      return (
-        <div key={info._id}> 
-        <h3>This List is for: {info.name} </h3>
-        <img src={info.imageRecipient} alt="Recipient pictrure" width="100"/>
-        {/* {console.log(info.user[0].userName)} */}
-        {/* <h4>created by: {info.user[0].userName}</h4> */}
-        {/* <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button> */}
-        </div>
-    )
-    })}
-     </div>
+      <div className="searchForm"> 
+          <form >
+          <label>Search for public Lists:</label>
+              <input 
+                type="email"
+                name="search"
+                value={search}
+                onChange={handleSearch}
+              />
+            { filteredRecipient && filteredRecipient.map((info) => {
+            return (
+              <div key={info._id}> 
+                <h3>This List is for: {info.name} </h3>
+                <img src={info.imageRecipient} alt="Recipient" width="100"/>
+                {/* {console.log(info.user[0].userName)} */}
+                {info.user.userName && <h4>created by: {info.user.userName}</h4>}
+                <Link to={`/profilePage/${info.user._id}`}> <button className="signUpbtn"> see {info.user.userName}'s profile</button> </Link>
+                <Link to={`/listPage/${info._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+            </div>
+            )
+      })}
+        </form>
+    </div>
     </div>
   );
 }

@@ -5,14 +5,18 @@ import { AuthContext } from "../context/auth.context";
 // import { Button } from "react-router-dom";
 import {Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
+import AddRecipient from "../components/AddRecipient"
+//import RecipientCard from "../components/RecipientCard"
 
 
 import { useState, useEffect } from "react";
 
 function ProfilePage(props) {
+
   const {userId} = useParams();
+
   const [userProfile, setUserProfile] = useState({})
-  console.log(userProfile)
+
   
   const { authenticateUser } = useContext(AuthContext)
   const navigate = useNavigate()
@@ -22,15 +26,16 @@ function ProfilePage(props) {
       .get(`${process.env.REACT_APP_API_URL}/profilePage/${userId}`)
       .then((response) => {
         const userDetails = response.data;
-        console.log(userDetails)
+        // console.log(userDetails)
         setUserProfile(userDetails)
         })
       .catch((error) => console.log(error));
   };
-  // console.log(getUserInfo)
+
 
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line
   }, [] );
 
 
@@ -73,8 +78,7 @@ function ProfilePage(props) {
         <h2> New Event? Create a new List! </h2>
         <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
         </div>
-
-        
+        <AddRecipient id={userId}/>
       </div>
     );
   
