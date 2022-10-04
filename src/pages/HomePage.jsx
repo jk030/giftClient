@@ -39,8 +39,19 @@ const filtered = recipientInfo.filter(
 
 
   return (
+<<<<<<< HEAD
     <div className="App">
      <h2>You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/>Use GoodTimes, collect ... </h2>
+=======
+    <div>
+        <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
+          <div  className="HomePage-Container"> 
+          <p className="headlineHomePage">You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/>Use GoodTimes, collect ... </p>
+          <button className="signUpbtn" href="/signup">Create account</button>
+          </div>
+
+     <div className="searchForm">
+>>>>>>> master
      <form >
      <label>Search for public Lists:</label>
         <input 
@@ -49,10 +60,16 @@ const filtered = recipientInfo.filter(
           value={search}
           onChange={handleSearch}
         />
+<<<<<<< HEAD
       <button type="submit">Search</button>
      </form>
   
     { filtered.map((info) => {
+=======
+      <button className="signUpbtn" type="submit">Search</button>
+     </form>
+     { filtered.map((info) => {
+>>>>>>> master
       return (
         <div key={info._id}> 
         <h3>This List is for: {info.name} </h3>
@@ -63,7 +80,13 @@ const filtered = recipientInfo.filter(
         </div>
     )
     })}
+<<<<<<< HEAD
 
+=======
+     </div>
+
+   
+>>>>>>> master
     </div>
 
   );

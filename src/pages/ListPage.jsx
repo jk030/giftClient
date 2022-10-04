@@ -28,7 +28,25 @@ function ListPage (props) {
     }, [] );
 
 
-return(
+    console.log(recipientInfo)
+
+    const getRecipientInfo = () => {
+        axios
+        .get(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`)
+        .then((response) => {
+          const recipientDetails = response.data;
+          console.log(recipientDetails)
+          setRecipientInfo(recipientDetails)
+          })
+        .catch((error) => console.log(error));
+    };
+  
+    useEffect(() => {
+      getRecipientInfo();
+    }, [] );
+
+
+return (
     <div className="list">
 
     <div> 
@@ -52,7 +70,7 @@ return(
     </div>
 
     </div>
-)
+    )
 }
 
 export default ListPage 

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { useContext } from "react";   
-import { AuthContext } from "../context/auth.context";                  
+import { AuthContext } from "../context/auth.context";                
 
 function NavbarGlobal() {
   const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
@@ -11,28 +11,22 @@ function NavbarGlobal() {
   return (
    <div> 
 
-    <Navbar className="navbar navbar-light bg-light">
-    <div className="container">
-     
-        <div className="col1" > 
+    <Navbar>
+    <div className="Navbar-1">
+        <div className="Navbar1-1" > 
          <Link className="GoodTimes" to="/">Good Times</Link>
         </div>
-
-
-        <div className="col1"> 
+        <div className="Navbar1-2"> 
       {isLoggedIn && (
-        <>
-          <Link to={`/profilePage/${user._id}`}><button>Profile</button></Link>        
-          <button onClick={logOutUser}>Logout</button>
-        </>
+        <div>
+          <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a>        
+          <button onClick={logOutUser} className="navLink2">Logout</button>
+          </div>
       )}
-
-
-          {!isLoggedIn && (
-            <>
-              <Link to="/login"> <button className="navLink">Login</button> </Link>
-              <Link to="/signup"> <button className="navLink">Register</button> </Link>
-            </>
+      {!isLoggedIn && (
+            <div>
+              <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register  </button></a>
+            </div>
           )}
         </div>
     </div>

@@ -7,8 +7,19 @@
   background: url(../public/Img/annie-spratt-_XdU9Q5iFRE-unsplash.jpg);
   background-repeat: no-repeat;
   width: 100%;
-  height: 150px;
+  height: 100px;
   background-size: cover;
+}
+
+.Navbar-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 96vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  height: 11vh;
 }
 
 .GoodTimes{
@@ -16,63 +27,58 @@
   color: #B99A75;  
   text-decoration: none;
   letter-spacing: 3px;
+  margin-left: 35vw;
 }
 
-.navLink{
+.Navbar1-2{
+  height: 7vh;
+  margin-right: 2vw;
+  letter-spacing: 30px;
+}
+
+.navLink1{
   color: #B99A75;  
   background-color: #fff;
   border: #fff;
+  height: 7vh;
+  letter-spacing: 6px
 }
 
-.container{
-  display: flex;
-}
-
-.col1{
-  margin-left: 50vh;
-}
-
-.col2{
-  float: right;
-  margin-top: 3vh;
-  margin-right: 50vh; 
+.navLink2{
+  color: #B99A75;  
+  background-color: #fff;
+  border: #fff;
+  height: 9vh;
+  letter-spacing: 6px
 }
 
 .SignupPage-Container{
-  margin: auto;
-  margin-top: 10vh;
   margin-left: 20vh;
   position: relative; 
   width: 500px;
-  height: 530px;
-}
-
-.LoginPage{
-  margin: auto;
-  margin-top: 10vh;
-  margin-left: 20vh;
-  position: relative; 
-  width: 500px;
-  height: 530px
 }
 
 .headline {
-  font-size: 30px;
+  font-size: 28px;
   color: #000;
   letter-spacing: 6px;
   text-align: center;
-  margin-top: 120px;
+  margin-top: 70px;
 }
 
 .Details{
   margin-top: 20px;
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 12px;
   color: #000;
   letter-spacing: 3px;
   font-weight: 500;
 }
 
+.Details2{
+  font-size: 12px;
+
+}
 form {
   display: flex;
   align-items: center;
@@ -94,7 +100,7 @@ input {
   color: #000;
   border: none;
   padding: 9px;
-  margin: 7px;
+  margin: 5px;
   border-radius: 10px;
 }
 
@@ -120,8 +126,8 @@ label{
   letter-spacing: 3px;
   border-radius: 10px;
   font-size: 10px;
-  
 }
+
 
 .signUpbtn:hover {
   background: #728d7a;
@@ -131,11 +137,34 @@ label{
 
 .imgSignUpPage{
   float: right;
-  margin-right: 30vh;
-  margin-top: -60px;
+  margin-right: 40vh;
   margin-bottom: 5vh;
   height: auto;
-  width: 400px
+  width: 300px
+}
+
+.imgHomePage{
+  float: left;
+  margin-left: 35vh;
+  margin-top: 7vh;
+  height: auto;
+  width: 300px
+}
+
+.headlineHomePage{
+  font-size: 18px;
+}
+
+.searchForm{
+  float: left;
+  margin-top: 230px;
+}
+
+.HomePage-Container{
+  margin-right: 30vh; 
+  margin-top: 25vh; 
+  float: right;
+  width: 500px;
 }
 .App-logo {
   height: 40vmin;

@@ -31,7 +31,6 @@ function ProfilePage(props) {
     getUserInfo();
   }, [] );
 
-
     return (
       <div className="Profile">
 
@@ -51,10 +50,8 @@ function ProfilePage(props) {
           <img src={recipient.imageRecipient} width={200}/>
           <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
           </div> 
-
           )
         })
-
         }
         <h2> New Event? Create a new List! </h2>
         <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
