@@ -1,20 +1,24 @@
 import React from "react";
 import {useParams} from "react-router-dom"
+import React, {useContext} from "react";
+import {useParams, useNavigate} from "react-router-dom"
+import { useState, useEffect } from "react";
 import axios from "axios";
 // import { Button } from "react-router-dom";
 import {Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
 
 
-import { useState, useEffect } from "react";
 
 function ProfilePage(props) {
-
   const {userId} = useParams();
-
   const [userProfile, setUserProfile] = useState({})
   console.log(userProfile)
   
+  const { authenticateUser } = useContext(AuthContext)
+
+  const navigate = useNavigate()
+
   const getUserInfo = () => {
       axios
       .get(`${process.env.REACT_APP_API_URL}/profilePage/${userId}`)
@@ -57,6 +61,31 @@ function ProfilePage(props) {
         <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
         </div>
 
+        <div className="ContainerGiftList" > 
+            <h1> List: </h1>
+            { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
+              return ( 
+                <div key={recipient._id}> 
+              <h4>{recipient.name}</h4>
+
+              <img src={recipient.imageRecipient} alt="image_recipient" width={200} />
+              <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+              <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+
+        </div> 
+          )
+        })
+        }
+
+            <div className="ContainerAddRecipient">
+                <h2> New Event? Create a new List! </h2>
+                <AddRecipient id={userId}/>
+            </div>
+
+        </div>
+
+        <AddRecipient getUserInfo={getUserInfo} />
+
       </div>
     );
 }
@@ -64,6 +93,3 @@ function ProfilePage(props) {
   export default ProfilePage;
 
 
-  // 1. axios -> liste von Recipiernt 
-  // 2. map 
-  // 3. pro Recipient eine Card 

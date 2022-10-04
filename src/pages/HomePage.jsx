@@ -44,11 +44,7 @@ function HomePage() {
     // eslint-disable-next-line
   }, [search])
 
-
-
-
   return (
-
     <div>
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
           <div  className="HomePage-Container"> 
@@ -74,6 +70,9 @@ function HomePage() {
                 {/* {info.user.userName && <h4>created by: {info.user.userName}</h4>} */}
                 {/* <Link to={`/profilePage/${info.user._id}`}> <button className="signUpbtn"> see {info.user.userName}'s profile</button> </Link> */}
                 <Link to={`/listPage/${info._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+                {info?.user?.userName && <h4>created by: {info?.user?.userName}</h4>}
+                <Link to={`/profilePage/${info?.user?._id}`}> <button className="signUpbtn"> see {info?.user?.userName}'s profile</button> </Link>
+                <Link to={`/listPage/${info?._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
             </div>
             )
       })}
