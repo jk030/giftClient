@@ -13,14 +13,14 @@ function ProfilePage(props) {
   const {userId} = useParams();
 
   const [userProfile, setUserProfile] = useState({})
-  console.log(userProfile)
+  // console.log(userProfile)
   
   const getUserInfo = () => {
       axios
       .get(`${process.env.REACT_APP_API_URL}/profilePage/${userId}`)
       .then((response) => {
         const userDetails = response.data;
-        console.log(userDetails)
+        // console.log(userDetails)
         setUserProfile(userDetails)
         })
       .catch((error) => console.log(error));
@@ -29,6 +29,7 @@ function ProfilePage(props) {
 
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line
   }, [] );
 
     return (
@@ -47,7 +48,7 @@ function ProfilePage(props) {
           return ( 
             <div> 
           <h4>{recipient.name}</h4>
-          <img src={recipient.imageRecipient} width={200}/>
+          <img src={recipient.imageRecipient} alt ="Recipient" width={200}/>
           <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
           </div> 
           )
