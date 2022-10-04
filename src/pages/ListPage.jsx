@@ -43,7 +43,7 @@ return (
             <article>{recipientInfo.unwanted}</article>
         </div> 
 
-            {Object.entries(recipientInfo.gift).map(allGifts => {
+            {/* {Object.entries(recipientInfo.gift).map(allGifts => {
                 console.log("this is the ", recipientInfo.gift)
             return (
                 <div>
@@ -53,7 +53,7 @@ return (
             </>}
                 </div>
             )
-        })}
+        })} */}
              
 
 
@@ -69,8 +69,12 @@ return (
             )
         })} */}
 
-    
-        
+        <div> 
+    {!recipientInfo.gifts ? <></> : <>
+        <h2>{recipientInfo.gifts[0].title}</h2> 
+        <h2> {recipientInfo.gifts[0].occasion}</h2>
+    </>}
+    </div>         
     </div>
     )
 }
@@ -80,9 +84,3 @@ return (
 export default ListPage 
 
 
-{/* <div> 
-    {!recipientInfo.gifts ? <></> : <>
-        <h2>{recipientInfo.gifts[0].title}</h2> 
-        <h2> {recipientInfo.gifts[0].occasion}</h2>
-    </>}
-    </div> */}

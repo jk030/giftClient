@@ -52,6 +52,55 @@
   letter-spacing: 6px
 }
 
+
+.Profile{
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContainerProfileInfo{
+  flex:1; 
+  position: relative;
+  top: 40px; 
+}
+
+.headlinePofile{
+  position: absolute;
+  top: 7%;
+  left: 34%;
+  font-size: 30px;
+  color: #B99A75;  
+  /* transform: translate(); */
+}
+
+.imageGiftHomePage {
+  position: relative;
+  z-index: 1;
+  top: 120px;
+  left: 0px;
+  margin-bottom: 10px;
+}
+.rectangle {
+  position: absolute;
+  top: 2px;
+  left: 155px;
+  margin-bottom: 10px;
+}
+
+
+.ContainerGiftList{
+  flex:1
+}
+/* .parent {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 10px;
+} */
+
+
+
+
 .SignupPage-Container{
   margin-left: 20vh;
   position: relative; 

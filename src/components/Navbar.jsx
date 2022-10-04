@@ -10,7 +10,6 @@ function NavbarGlobal() {
 
   return (
    <div> 
-
     <Navbar>
     <div className="Navbar-1">
         <div className="Navbar1-1" > 
@@ -19,13 +18,12 @@ function NavbarGlobal() {
         <div className="Navbar1-2"> 
       {isLoggedIn && (
         <div>
-          <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a>        
-          <button onClick={logOutUser} className="navLink2">Logout</button>
+          <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a> <button onClick={logOutUser} className="navLink2">Logout</button>
           </div>
-      )}
+          )}
       {!isLoggedIn && (
             <div>
-              <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register  </button></a>
+              <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register </button></a>
             </div>
           )}
         </div>

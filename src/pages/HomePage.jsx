@@ -13,13 +13,10 @@ function HomePage() {
   console.log(recipientInfo)
   const [search, setSearch] = useState ("")
   const handleSearch = (e) => setSearch(e.target.value);
-const filtered = recipientInfo.filter(
+  const filtered = recipientInfo.filter(
   recipient => {
     return recipient.name.toLowerCase().includes(search.toLowerCase())
-  }
-)
-
-
+  })
   const getRecipientInfo = () => {
     const storedToken = localStorage.getItem("authToken");
       axios
@@ -30,14 +27,9 @@ const filtered = recipientInfo.filter(
         })
       .catch((error) => console.log(error));
   };
-
   useEffect(() => {
     getRecipientInfo();
   }, [] );
-
-
-
-
   return (
     <div>
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
@@ -63,17 +55,14 @@ const filtered = recipientInfo.filter(
         <h3>This List is for: {info.name} </h3>
         <img src={info.imageRecipient} alt="Recipient pictrure" width="100"/>
         {/* {console.log(info.user[0].userName)} */}
-        <h4>created by: {info.user[0].userName}</h4>
+        {/* <h4>created by: {info.user[0].userName}</h4> */}
         {/* <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button> */}
         </div>
     )
     })}
      </div>
-
-   
     </div>
   );
-
 }
 
 export default HomePage;
