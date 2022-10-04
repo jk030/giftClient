@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom"
+import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
 
 function AddRecipient(props) {
   const [ name, setName ] = useState("");
@@ -10,13 +10,14 @@ function AddRecipient(props) {
   const [ preferences, setPreferences ] = useState("");
   const [ unwanted, setUnwanted ] = useState("");
 
+  const { user } = useContext(AuthContext)
+
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const requestBody = { name, personalDetails, preferences, unwanted }
-
+    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName }
+    const storedToken = localStorage.getItem("authToken");
     axios
-      .post(`${API_URL}/api/recipients`, requestBody)
+      .post(`${process.env.REACT_APP_API_URL}/api/recipients`, requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
         setName("")
         setPersonalDetails("")
@@ -26,11 +27,12 @@ function AddRecipient(props) {
       })
       .catch((error) => console.log(error))
   }
-
+//console.log("these are the props",props)
+  
   return (
     <div className="AddRecipient">
       <h3>Add Recipient</h3>
-
+      
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input
@@ -56,7 +58,7 @@ function AddRecipient(props) {
           onChange={(e) => setPreferences(e.target.value)}
         />
 
-        <label>Add Past Gifts:</label>
+        <label>Things they dont want:</label>
         <textarea
           type="text"
           name="unwanted"
@@ -68,6 +70,7 @@ function AddRecipient(props) {
           <button>Go Back</button>    
         </Link>
         <button type="submit">Save</button>
+        
       </form>
     </div>
   );

@@ -22,7 +22,7 @@ function NavbarGlobal() {
         <div className="col1"> 
       {isLoggedIn && (
         <>
-          <Link to={`/profilePage/${user._id}`}><button>Profile</button></Link>        
+          <Link to={`/profilePage/${user._id}`} ><button>Profile</button></Link>        
           <button onClick={logOutUser}>Logout</button>
         </>
       )}
