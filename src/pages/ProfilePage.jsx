@@ -1,19 +1,19 @@
+import React from "react";
+import {useParams} from "react-router-dom"
 import React, {useContext} from "react";
 import {useParams, useNavigate} from "react-router-dom"
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
 // import { Button } from "react-router-dom";
 import {Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
-import AddRecipient from "../components/AddRecipient"
-//import RecipientCard from "../components/RecipientCard"
 
 
 
 function ProfilePage(props) {
   const {userId} = useParams();
   const [userProfile, setUserProfile] = useState({})
+  console.log(userProfile)
   
   const { authenticateUser } = useContext(AuthContext)
 
@@ -24,39 +24,41 @@ function ProfilePage(props) {
       .get(`${process.env.REACT_APP_API_URL}/profilePage/${userId}`)
       .then((response) => {
         const userDetails = response.data;
-        // console.log(userDetails)
+        console.log(userDetails)
         setUserProfile(userDetails)
         })
       .catch((error) => console.log(error));
   };
-
+  // console.log(getUserInfo)
 
   useEffect(() => {
     getUserInfo();
-    // eslint-disable-next-line
   }, [] );
-
-
-  const deleteRecipient = () => {                  
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/recipients/${userProfile.recipient[0]._id}`)
-      .then(() => {
-        getUserInfo();
-        navigate(`/profilePage/${userId}`);
-      })
-      .catch((err) => console.log(err));
-
-  };  
-
 
     return (
       <div className="Profile">
 
-        <div className="ContainerProfileInfo"> 
-                <img className="imageGiftHomePage" src="/Img/image 22.png" alt="gift" width={270} />
-                <img className="rectangle" src="/Img/Rectangle 19.png" alt="gift" width={400} />  
-                <div className="headlinePofile"> Welcome back  <br /> {userProfile.userName}! </div>
-            
+        <div className="Box1ProfileInfo"> 
+        <h1 className="layer1"> Welcome back {userProfile.userName}! </h1> 
+            <div className="parent">
+              <img className="image1" src="/Img/image 22.png" alt="gift" width={300} />
+              <img className="image2" src="/Img/Rectangle 19.png" alt="gift" width={400} />
+            </div>   
+        </div>
+        <div className="Box2GiftList" > 
+        <h1> List: </h1>
+        { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
+          return ( 
+            <div> 
+          <h4>{recipient.name}</h4>
+          <img src={recipient.imageRecipient} width={200}/>
+          <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
+          </div> 
+          )
+        })
+        }
+        <h2> New Event? Create a new List! </h2>
+        <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
         </div>
 
         <div className="ContainerGiftList" > 
@@ -65,21 +67,27 @@ function ProfilePage(props) {
               return ( 
                 <div key={recipient._id}> 
               <h4>{recipient.name}</h4>
+
               <img src={recipient.imageRecipient} alt="image_recipient" width={200} />
               <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
               <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+
         </div> 
           )
         })
         }
 
-        <h2> New Event? Create a new List! </h2>
-        <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
+            <div className="ContainerAddRecipient">
+                <h2> New Event? Create a new List! </h2>
+                <AddRecipient id={userId}/>
+            </div>
+
         </div>
+
         <AddRecipient getUserInfo={getUserInfo} />
+
       </div>
     );
-  
 }
   
   export default ProfilePage;

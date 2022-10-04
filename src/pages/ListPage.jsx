@@ -2,15 +2,16 @@ import React from "react";
 import {useParams} from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios";
+import AddGift from "../components/AddGift"
 //import { Button } from "react-router-dom";
     
 
 function ListPage (props) {
-    const {recipientId} = useParams();
+    const { recipientId } = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
     // const [giftDetails, setGiftDetails] = useState({})
 
-    console.log(recipientInfo)
+    console.log(recipientInfo.gifts)
 
     const getRecipientInfo = () => {
         axios
@@ -31,32 +32,30 @@ function ListPage (props) {
 return (
     <div className="list">
 
-    <div> 
-    <h2>{recipientInfo.name}</h2>
-    <img src={recipientInfo.imageRecipient} alt="Recipient" width={200}/>
-    </div>
-    <div>
-    <p>{recipientInfo.personalDetails}</p>
-    </div>
-    <div>
-    <article>{recipientInfo.preference}</article>
-    </div>
-    <div>
-    <article>{recipientInfo.unwanted}</article>
+    <div className="ContainerRecipientDetailsListPage"> 
+        <h2>{recipientInfo.name}</h2>
+        <img src={recipientInfo.imageRecipient} alt="Recipient" width={200}/>
+        <p>{recipientInfo.personalDetails}</p>
+        <article>{recipientInfo.preference}</article>
+        <article>{recipientInfo.unwanted}</article>
     </div>
 
+    <ul> 
+    {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
+        return <li key={gift._id}>
+                    <h2>{gift.title}</h2> 
+                    <img src={gift.imageGift} alt="gift_image"/>
+                    <p>{gift.priceSpan}</p> 
+                    <p> {gift.occasion}</p>
+                    <p>{gift.notes}</p>
+                </li>
+    })}
+    </ul>  
 
-    <div> 
-    <h2>{recipientInfo.name}</h2>
-
-    </div>
-
-        <div> 
-    {!recipientInfo.gifts ? <></> : <>
-        <h2>{recipientInfo.gifts[0].title}</h2> 
-        <h2> {recipientInfo.gifts[0].occasion}</h2>
-    </>}
-    </div>         
+    <div className="ContainerAddGift">
+                <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
+            </div>
+  
     </div>
     )
 }

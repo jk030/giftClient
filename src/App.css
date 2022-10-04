@@ -52,27 +52,6 @@
   letter-spacing: 6px
 }
 
-
-.Profile{
-  display: flex;
-  justify-content: space-between;
-}
-
-.ContainerProfileInfo{
-  flex:1; 
-  position: relative;
-  top: 40px; 
-}
-
-.headlinePofile{
-  position: absolute;
-  top: 7%;
-  left: 34%;
-  font-size: 30px;
-  color: #B99A75;  
-  /* transform: translate(); */
-}
-
 .imageGiftHomePage {
   position: relative;
   z-index: 1;
@@ -87,19 +66,35 @@
   margin-bottom: 10px;
 }
 
+.Profile{
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContainerProfileInfo{
+  flex:1; 
+  position: relative;
+  top: 40px; 
+}
+
+.headlinePofile{
+  position: absolute;
+  top: 5%;
+  left: 34%;
+  font-size: 30px;
+  color: #B99A75;  
+  /* transform: translate(); */
+}
 
 .ContainerGiftList{
-  flex:1
+  flex:1;
+  margin-top: 40px;
 }
-/* .parent {
-  position: relative;
-  top: 0;
-  left: 0;
-  margin-bottom: 10px;
-} */
 
-
-
+.ContainerAddRecipient{
+  margin-top: 90px;
+  width: 400px;
+}
 
 .SignupPage-Container{
   margin-left: 20vh;
@@ -142,6 +137,9 @@ form {
   justify-content: space-between;
 }
 
+.ContainerRecipientDetailsListPage{
+  float: left;
+}
 
 input {
   width: 300px;
@@ -219,6 +217,12 @@ label{
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.ContainerAddGift{
+  margin-top: 90px;
+  width: 400px;
+  margin-left: 800px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
