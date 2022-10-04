@@ -11,6 +11,7 @@ function AddRecipient(props) {
   const [ personalDetails, setPersonalDetails ] = useState("");
   const [ preferences, setPreferences ] = useState("");
   const [ unwanted, setUnwanted ] = useState("");
+  const [ imageRecipient, setImageRecipient ] = useState("");
 
   const { user } = useContext(AuthContext)
 
@@ -19,7 +20,9 @@ function AddRecipient(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id }
+  
+    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient }
+
     const storedToken = localStorage.getItem("authToken");
 
     axios
@@ -42,6 +45,10 @@ function AddRecipient(props) {
     <div className="AddRecipient">
       <h3>Add Recipient</h3>
       
+
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <label>Name:</label>
+
       <form onSubmit={handleSubmit}>
         <label className="Details2" >Name:</label>
         <input
@@ -67,6 +74,8 @@ function AddRecipient(props) {
           onChange={(e) => setPreferences(e.target.value)}
         />
 
+        <label>Things they don't want:</label>
+        <textarea
         <label className="Details2" >Things they dont want:</label>
         <input
           type="text"
@@ -75,6 +84,18 @@ function AddRecipient(props) {
           onChange={(e) => setUnwanted(e.target.value)}
         />
 
+        <label>Upload image</label>
+        <input
+          type="file"
+          name="imageRecipient"
+          value={imageRecipient}
+          onChange={(e) => setImageRecipient(e.target.value)}
+        />
+
+        <Link to="/profilePage">
+          <button>Go Back</button>    
+        </Link>
+        <button type="submit">Save</button>
         <button className="signUpbtn" type="submit">Save</button>
         
       </form>
