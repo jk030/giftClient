@@ -8,7 +8,7 @@ import axios from "axios";
 function ListPage (props) {
     const {recipientId} = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
-    const [giftDetails, setGiftDetails] = useState({})
+    // const [giftDetails, setGiftDetails] = useState({})
 
     console.log(recipientInfo)
 
@@ -25,15 +25,15 @@ function ListPage (props) {
   
     useEffect(() => {
       getRecipientInfo();
+      // eslint-disable-next-line
     }, [] );
 
-
-return(
+return (
     <div className="list">
 
     <div> 
     <h2>{recipientInfo.name}</h2>
-    <img src={recipientInfo.imageRecipient} width={200}/>
+    <img src={recipientInfo.imageRecipient} alt="Recipient" width={200}/>
     </div>
     <div>
     <p>{recipientInfo.personalDetails}</p>
@@ -52,7 +52,7 @@ return(
     </div>
 
     </div>
-)
+    )
 }
 
 export default ListPage 

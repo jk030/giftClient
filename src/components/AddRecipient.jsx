@@ -14,8 +14,10 @@ function AddRecipient(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName }
     const storedToken = localStorage.getItem("authToken");
+
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/recipients`, requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
