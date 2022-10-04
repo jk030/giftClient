@@ -55,8 +55,8 @@
 .imageGiftHomePage {
   position: relative;
   z-index: 1;
-  top: 120px;
-  left: 0px;
+  top: 150px;
+  left: 160px;
   margin-bottom: 10px;
 }
 .rectangle {
@@ -68,32 +68,54 @@
 
 .Profile{
   display: flex;
-  justify-content: space-between;
+  flex-wrap: nowrap; 
+  justify-content: center
 }
 
 .ContainerProfileInfo{
-  flex:1; 
   position: relative;
   top: 40px; 
+  left: 20px;
+  width: 600px;
+  padding: 20px;
 }
 
 .headlinePofile{
   position: absolute;
   top: 5%;
-  left: 34%;
+  left: 70%;
   font-size: 30px;
   color: #B99A75;  
   /* transform: translate(); */
 }
-
-.ContainerGiftList{
-  flex:1;
-  margin-top: 40px;
+.headlineList{
+  font-size: 30px;
+  color: #000; 
+  font-weight: 200;
+  margin-left: 300px;
 }
+.ContainerGiftList{
+  margin-top: 50px;
+  margin-right: 200px;
+  justify-content: center;
+  padding-right: 80px;
+}
+
+.ContainerRecipients{
+  background-color:rgb(242,	229, 214, 0.8); 
+  width: 450px;
+  height: 150px;
+  margin-bottom: 20px;
+  margin-left: 300px;
+  border-radius: 6px;
+  padding: 5px;
+}
+
 
 .ContainerAddRecipient{
   margin-top: 90px;
-  width: 400px;
+  padding-right: 60px;
+  margin-left: 350px ;
 }
 
 .SignupPage-Container{
@@ -121,8 +143,14 @@
 
 .Details2{
   font-size: 12px;
-
 }
+
+.Details3{
+    letter-spacing: 3px;
+    margin-top: 20px;
+    font-size: 15px;
+    font-weight: 500;
+  }
 
 form {
   display: flex;
@@ -168,7 +196,7 @@ label{
 .signUpbtn{
   background-color: #363636;
   color: #F2E5D6;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   padding: 10px;
   text-transform: uppercase;
   letter-spacing: 3px;

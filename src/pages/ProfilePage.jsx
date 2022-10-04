@@ -53,31 +53,32 @@ function ProfilePage(props) {
 
     return (
       <div className="Profile">
-
         <div className="ContainerProfileInfo"> 
                 <img className="imageGiftHomePage" src="/Img/image 22.png" alt="gift" width={270} />
                 <img className="rectangle" src="/Img/Rectangle 19.png" alt="gift" width={400} />  
-                <div className="headlinePofile"> Welcome back  <br /> {userProfile.userName}! </div>
-            
+                <div className="headlinePofile"> Welcome back <br /> {userProfile.userName}! </div>   
         </div>
 
         <div className="ContainerGiftList" > 
-            <h1> List: </h1>
-            { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
-              return ( 
-                <div key={recipient._id}> 
-              <h4>{recipient.name}</h4>
-              <img src={recipient.imageRecipient} width={200}/>
-              <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link> <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
-        </div> 
-          )
-        })
-        }
+            <div>
+              <h1 className="headlineList" > List: </h1>
+              { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
+                return ( 
+                  <div className="ContainerRecipients" key={recipient._id}> 
+                    <h4 className="Details3" >Name: {recipient.name}</h4>
+                {/* <img src={recipient.imageRecipient} width={200}/> */}
+                <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link>
+                <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+            </div>   
+           )
+          })}
+        </div>
 
-            <div className="ContainerAddRecipient">
+        <div className="ContainerAddRecipient">
                 <h2> New Event? Create a new List! </h2>
                 <AddRecipient id={userId}  getUserInfo={getUserInfo}/>
             </div>
+
 
         </div>
 
