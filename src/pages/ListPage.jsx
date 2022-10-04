@@ -8,6 +8,25 @@ import axios from "axios";
 function ListPage (props) {
     const {recipientId} = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
+    const [giftDetails, setGiftDetails] = useState({})
+
+    console.log(recipientInfo)
+
+    const getRecipientInfo = () => {
+        axios
+        .get(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`)
+        .then((response) => {
+          const recipientDetails = response.data;
+          console.log(recipientDetails)
+          setRecipientInfo(recipientDetails)
+          })
+        .catch((error) => console.log(error));
+    };
+  
+    useEffect(() => {
+      getRecipientInfo();
+    }, [] );
+
 
     console.log(recipientInfo)
 
@@ -29,60 +48,29 @@ function ListPage (props) {
 
 return (
     <div className="list">
-        <div> 
-            <h2>{recipientInfo.name}</h2>
-            <img src={recipientInfo.imageRecipient} width={200}/> 
-        </div>
-        <div>
-            <p>{recipientInfo.personalDetails}</p>
-        </div>
-        <div>
-            <article>{recipientInfo.preference}</article>
-        </div>
-        <div>
-            <article>{recipientInfo.unwanted}</article>
-        </div> 
 
-            {Object.entries(recipientInfo.gift).map(allGifts => {
-                console.log("this is the ", recipientInfo.gift)
-            return (
-                <div>
-                {!allGifts ? <></> : <>
-            <h2>{allGifts[0].title}</h2> 
-            <h2> {allGifts[0].occasion}</h2>
-            </>}
-                </div>
-            )
-        })}
-             
+    <div> 
+    <h2>{recipientInfo.name}</h2>
+    <img src={recipientInfo.imageRecipient} width={200}/>
+    </div>
+    <div>
+    <p>{recipientInfo.personalDetails}</p>
+    </div>
+    <div>
+    <article>{recipientInfo.preference}</article>
+    </div>
+    <div>
+    <article>{recipientInfo.unwanted}</article>
+    </div>
 
 
-     
-        {/* {recipientInfo.gifts.map(allGifts => {
-            return (
-                <div>
-                {!allGifts ? <></> : <>
-            <h2>{allGifts[0].title}</h2> 
-            <h2> {allGifts[0].occasion}</h2>
-            </>}
-                </div>
-            )
-        })} */}
+    <div> 
+    <h2>{recipientInfo.name}</h2>
 
-    
-        
+    </div>
+
     </div>
     )
 }
 
-
-
 export default ListPage 
-
-
-{/* <div> 
-    {!recipientInfo.gifts ? <></> : <>
-        <h2>{recipientInfo.gifts[0].title}</h2> 
-        <h2> {recipientInfo.gifts[0].occasion}</h2>
-    </>}
-    </div> */}

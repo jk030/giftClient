@@ -9,7 +9,9 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function ProfilePage(props) {
+
   const {userId} = useParams();
+
   const [userProfile, setUserProfile] = useState({})
   console.log(userProfile)
   
@@ -31,6 +33,7 @@ function ProfilePage(props) {
 
     return (
       <div className="Profile">
+
         <div className="Box1ProfileInfo"> 
         <h1 className="layer1"> Welcome back {userProfile.userName}! </h1> 
             <div className="parent">

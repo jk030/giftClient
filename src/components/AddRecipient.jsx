@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom"
 import axios from "axios";
 
-const API_URL = "http://localhost:5005";
-
 function AddRecipient(props) {
   const [ name, setName ] = useState("");
   const [ personalDetails, setPersonalDetails ] = useState("");
@@ -13,10 +11,14 @@ function AddRecipient(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, personalDetails, preferences, unwanted }
+    const { userId } = props
+
+    const requestBody = { name, personalDetails, preferences, unwanted, userId }
+
+    const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(`${API_URL}/api/recipients`, requestBody)
+      .post(`${process.env.REACT_APP_API_URL}/api/recipients`, requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
       .then((response) => {
         setName("")
         setPersonalDetails("")
