@@ -65,18 +65,25 @@ function ProfilePage(props) {
               return ( 
                 <div key={recipient._id}> 
               <h4>{recipient.name}</h4>
+
               <img src={recipient.imageRecipient} alt="image_recipient" width={200} />
               <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
               <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+
         </div> 
           )
         })
         }
 
-        <h2> New Event? Create a new List! </h2>
-        <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
+            <div className="ContainerAddRecipient">
+                <h2> New Event? Create a new List! </h2>
+                <AddRecipient id={userId}/>
+            </div>
+
         </div>
+
         <AddRecipient getUserInfo={getUserInfo} />
+
       </div>
     );
   
@@ -85,6 +92,3 @@ function ProfilePage(props) {
   export default ProfilePage;
 
 
-  // 1. axios -> liste von Recipiernt 
-  // 2. map 
-  // 3. pro Recipient eine Card 
