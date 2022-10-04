@@ -65,20 +65,22 @@ function ProfilePage(props) {
             <h1> List: </h1>
             { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
               return ( 
-                <div> 
+                <div key={recipient._id}> 
               <h4>{recipient.name}</h4>
               <img src={recipient.imageRecipient} width={200}/>
-              <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
-              <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+              <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link> <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
         </div> 
           )
         })
         }
 
-        <h2> New Event? Create a new List! </h2>
-        <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
+            <div className="ContainerAddRecipient">
+                <h2> New Event? Create a new List! </h2>
+                <AddRecipient id={userId}/>
+            </div>
+
         </div>
-        <AddRecipient id={userId}/>
+
       </div>
     );
   
