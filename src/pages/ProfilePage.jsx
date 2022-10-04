@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
 import {useParams, useNavigate} from "react-router-dom"
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 // import { Button } from "react-router-dom";
@@ -9,16 +10,13 @@ import AddRecipient from "../components/AddRecipient"
 //import RecipientCard from "../components/RecipientCard"
 
 
-import { useState, useEffect } from "react";
 
 function ProfilePage(props) {
-
   const {userId} = useParams();
-
   const [userProfile, setUserProfile] = useState({})
-
   
   const { authenticateUser } = useContext(AuthContext)
+
   const navigate = useNavigate()
 
   const getUserInfo = () => {
@@ -65,9 +63,9 @@ function ProfilePage(props) {
             <h1> List: </h1>
             { Object.keys(userProfile).length !== 0 && userProfile.recipient.map(recipient => {
               return ( 
-                <div> 
+                <div key={recipient._id}> 
               <h4>{recipient.name}</h4>
-              <img src={recipient.imageRecipient} width={200}/>
+              <img src={recipient.imageRecipient} alt="image_recipient" width={200} />
               <Link to={`/listPage/${recipient._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
               <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
         </div> 
@@ -78,7 +76,7 @@ function ProfilePage(props) {
         <h2> New Event? Create a new List! </h2>
         <Button href="/addNewList" type="button" className="btn btn-outline-light">Add New List</Button>
         </div>
-        <AddRecipient id={userId}/>
+        <AddRecipient getUserInfo={getUserInfo} />
       </div>
     );
   
