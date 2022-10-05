@@ -22,7 +22,6 @@ function ListPage (props) {
 
     const [edit,setEdit] = useState (false) //use the setEdit only when logged in 
 
-
     const getRecipientInfo = () => {
         axios
         .get(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`)
@@ -134,7 +133,8 @@ return (
     {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
         return <li key={gift._id}>
                     <h2>{gift.title}</h2> 
-                    <img src={gift.imageGift} alt="gift_image"/>
+                    {/* TODO: find source of imageGift */}
+                    <img src={gift.imageGift} alt="Gift"/>
                     <p>{gift.priceSpan}</p> 
                     <a href={gift.link}><p>Link</p></a>
                     <p> {gift.occasion}</p>

@@ -28,9 +28,23 @@ const createRecipient = (newRecipient) => {
     .catch(errorHandler);
 };
 
+const getGift = () => {
+  return service.get("/gifts")
+    .then((res) => res.data)
+    .catch(errorHandler);
+};
+
+const createGift = (newGift) => {
+  return service.post("/gifts", newGift)
+    .then(res => res.data)
+    .catch(errorHandler);
+};
+
 export default {
     service,
   getRecipient,
   uploadImage,
-  createRecipient
+  createRecipient,
+  getGift,
+  createGift,
 };
