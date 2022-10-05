@@ -20,7 +20,7 @@ function ListPage (props) {
     const [ preferences, setPreferences ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
 
-    const [edit,setEdit] = useState (false) //use the setEdit only when logged in 
+    const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
 
     const getRecipientInfo = () => {
         axios
@@ -144,11 +144,11 @@ return (
     })}
     </ul>
 
-
-    <div className="ContainerAddGift">
+    {user._id === recipientInfo.user &&
+        <div className="ContainerAddGift">
                 <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
-            </div>
-  
+        </div>
+    }
 
 
   
