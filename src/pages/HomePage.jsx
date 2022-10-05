@@ -69,7 +69,7 @@ function HomePage() {
                 {info?.user?.userName && <h4>created by: {info?.user?.userName}</h4>}
                 <Link to={`/profilePage/${info?.user?._id}`}> <button className="signUpbtn"> see {info?.user?.userName}'s profile</button> </Link>
                 <Link to={`/listPage/${info?._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
-            </div>
+              </div>
             )
       })}
         </form>

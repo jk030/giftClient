@@ -35,7 +35,7 @@ function AddGift(props) {
     }
 
     return (
-        <div>
+        <div className="AddRecipient">
             <h3>Add New Gift</h3>
             <form onSubmit={handleSubmit}>
                 <label className="Details2" >Title: </label>
