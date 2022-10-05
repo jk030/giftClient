@@ -1,9 +1,9 @@
-import React, {useContext} from "react";
+import React from "react"; //{useContext}
 import {useParams, useNavigate} from "react-router-dom"
 import axios from "axios";
-import { AuthContext } from "../context/auth.context";
+// import { AuthContext } from "../context/auth.context";
 // import { Button } from "react-router-dom";
-import {Button } from "react-bootstrap"
+// import {Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
 import AddRecipient from "../components/AddRecipient"
 //import RecipientCard from "../components/RecipientCard"
@@ -18,7 +18,7 @@ function ProfilePage(props) {
   const [userProfile, setUserProfile] = useState({})
 
   
-  const { authenticateUser } = useContext(AuthContext)
+  // const { authenticateUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const getUserInfo = () => {
@@ -66,7 +66,7 @@ function ProfilePage(props) {
                 return ( 
                   <div className="ContainerRecipients" key={recipient._id}> 
                     <h4 className="Details3" >Name: {recipient.name}</h4>
-                {/* <img src={recipient.imageRecipient} width={200}/> */}
+                <img src={recipient.imageRecipient} alt="Recipient" style={{width: 100}}/>
                 <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link>
                 <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
             </div>   

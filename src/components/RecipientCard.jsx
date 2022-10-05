@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
-const API_URL = "http://localhost:5005";
+// const API_URL = "http://localhost:5005";
 
 
 function RecipientCard () {
@@ -30,12 +30,13 @@ function RecipientCard () {
   return (
     <div className="RecipientCard">
     { recipientInfo.map((info) => {
-
+      
       return (
         <div> 
-        <h1>{info.name} </h1>
-        <img src={info.imageRecipient} alt="Recipient pictrure" width="100"/>
-        <Link to={`/listPage`}></Link>
+          <h1>{info.name} </h1>
+          <img src={info.imageRecipient} alt="Recipient" width="100"/>
+          {console.log(info.imageRecipient)}
+          <Link to={`/listPage`}></Link>
         </div>
     )
     })}

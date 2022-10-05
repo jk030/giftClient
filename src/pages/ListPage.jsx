@@ -64,14 +64,14 @@ export default ListPage
 
 
 
- {/* {Object.entries(recipientInfo.gift).map(allGifts => {
-                console.log("this is the ", recipientInfo.gift)
-            return (
-                <div>
-                {!allGifts ? <></> : <>
-            <h2>{allGifts[0].title}</h2> 
-            <h2> {allGifts[0].occasion}</h2>
-            </>}
-                </div>
-            )
-        })} */}
+//  {Object.entries(recipientInfo.gift).map(allGifts => {
+//                 console.log("this is the ", recipientInfo.gift)
+//             return (
+//                 <div>
+//                 {!allGifts ? <></> : <>
+//             <h2>{allGifts[0].title}</h2> 
+//             <h2> {allGifts[0].occasion}</h2>
+//             </>}
+//                 </div>
+//             )
+//         })}
