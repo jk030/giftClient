@@ -5,6 +5,7 @@ import axios from "axios";
 import AddGift from "../components/AddGift"
 import { AuthContext } from "../context/auth.context";
 
+
 //import { Button } from "react-router-dom";
     
 
@@ -135,6 +136,7 @@ return (
                     <h2>{gift.title}</h2> 
                     <img src={gift.imageGift} alt="gift_image"/>
                     <p>{gift.priceSpan}</p> 
+                    <a href={gift.link}><p>Link</p></a>
                     <p> {gift.occasion}</p>
                     <p>{gift.notes}</p>
                 </li>
@@ -158,14 +160,14 @@ export default ListPage
 
 
 
- {/* {Object.entries(recipientInfo.gift).map(allGifts => {
-                console.log("this is the ", recipientInfo.gift)
-            return (
-                <div>
-                {!allGifts ? <></> : <>
-            <h2>{allGifts[0].title}</h2> 
-            <h2> {allGifts[0].occasion}</h2>
-            </>}
-                </div>
-            )
-        })} */}
+//  {Object.entries(recipientInfo.gift).map(allGifts => {
+//                 console.log("this is the ", recipientInfo.gift)
+//             return (
+//                 <div>
+//                 {!allGifts ? <></> : <>
+//             <h2>{allGifts[0].title}</h2> 
+//             <h2> {allGifts[0].occasion}</h2>
+//             </>}
+//                 </div>
+//             )
+//         })}

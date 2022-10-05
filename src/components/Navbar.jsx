@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
+// import Container from 'react-bootstrap/Container';
 import { useContext } from "react";   
 import { AuthContext } from "../context/auth.context";                
 
@@ -29,7 +29,7 @@ function NavbarGlobal() {
         </div>
     </div>
     </Navbar>
-    <img className="imgNavbar"/>
+    <img className="imgNavbar" alt="Navbar" />
     </div> 
   );
 }

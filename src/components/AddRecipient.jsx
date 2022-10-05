@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom"
 import { AuthContext } from "../context/auth.context";
-import axios from "axios";
+// import axios from "axios";
+import service from "../service.js";
 
 
 function AddRecipient(props) {
@@ -9,25 +9,46 @@ function AddRecipient(props) {
   const [ personalDetails, setPersonalDetails ] = useState("");
   const [ preferences, setPreferences ] = useState("");
   const [ unwanted, setUnwanted ] = useState("");
+  const [ imageRecipient, setImageRecipient ] = useState("");
 
   const { user } = useContext(AuthContext)
   // console.log("this is tthe user",user)
   const {getUserInfo} = props
 
+  const handleFileUpload = (e) => {
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+ 
+    const uploadData = new FormData();
+ 
+    // imageUrl => this name has to be the same as in the model since we pass
+    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    uploadData.append("imageRecipient", e.target.files[0]);
+  
+    service
+      .uploadImage(uploadData)
+      .then(response => {
+        console.log("response is: ", response);
+        // response carries "fileUrl" which we can use to update the state
+        setImageRecipient(response.fileUrl);
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName }
-    const storedToken = localStorage.getItem("authToken");
+    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient }
+    // const storedToken = localStorage.getItem("authToken");
 
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/api/recipients`, requestBody, {headers: {Authorization: `Bearer ${storedToken}`}})
+    service
+      .createRecipient(requestBody)
       .then((response) => {
         getUserInfo()
         setName("")
         setPersonalDetails("")
         setPreferences("")
         setUnwanted("")
+        setImageRecipient("")
         // props.refreshRecipients();
       })
       .catch((error) => console.log(error))
@@ -70,6 +91,16 @@ function AddRecipient(props) {
           value={unwanted}
           onChange={(e) => setUnwanted(e.target.value)}
         />
+
+        <label className="Details2" >Upload image: </label>
+        <input
+          type="file"
+          name="imageRecipient"
+          
+          onChange={(e) => handleFileUpload(e)}
+        />
+
+
         <button className="signUpbtn" type="submit">Save</button>
         
       </form>
