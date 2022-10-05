@@ -39,9 +39,10 @@ function ProfilePage(props) {
   }, [] );
 
 
-  const deleteRecipient = () => {                  
+  const deleteRecipient = (recipientId) => {        
+    console.log(recipientId)          
     axios
-      .delete(`${process.env.REACT_APP_API_URL}/api/recipients/${userProfile.recipient[0]._id}`)
+      .delete(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`)
       .then(() => {
         getUserInfo();
         navigate(`/profilePage/${userId}`);
@@ -68,7 +69,7 @@ function ProfilePage(props) {
                     <h4 className="Details3" >Name: {recipient.name}</h4>
                 {/* <img src={recipient.imageRecipient} width={200}/> */}
                 <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link>
-                <button className="signUpbtn" onClick={deleteRecipient}>Delete Recipient</button>
+                <button className="signUpbtn" onClick={()=> deleteRecipient(recipient._id)}>Delete Recipient</button>
             </div>   
            )
           })}
