@@ -53,10 +53,15 @@ function HomePage() {
           <a href="/signup"><button className="signUpbtn">Create account</button></a>
           </div>
         
-          <div class="button-down"></div>
+        <div className="button-container">
+            <a href="#search">
+              <div className="button-down"></div>
+              </a>
+        </div>
+          
           
 
-      <div className="searchForm"> 
+      <div className="searchForm" id="search"> 
           <form className="form" >
           <label className="headlineSearchForm">Search for public Lists:</label>
               <input id="search" type="text" name="search" value={search} placeholder="Who are you looking for ?" onChange={handleSearch}/> 

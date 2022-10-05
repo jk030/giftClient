@@ -243,11 +243,15 @@ label{
   width: 500px;
 }
 
+.button-container {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  
+}
 .button-down {
-  position: absolute;
-  padding: 5px;
-  margin-top: 540px;
-  margin-left: 650px;
+  margin-bottom: 50px;
   background: #363636;
   height: 50px;
   width: 50px;
@@ -255,31 +259,26 @@ label{
   transition: all 0.2s linear;
 }
 
-.arrowPosition{
-  margin-top: 300px;
-}
 .button-down:hover {
+  cursor: pointer;
   transform: translate3d(0, 10px, 0);
 }
 
 .button-down::after {
   content: "";
-  position: absolute;
-  left: 17px;
-  z-index: 11;
+  margin-left: 10px;
+  top: 5px; 
   display: block;
   width: 25px;
   height: 25px;
+  
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;
 }
 
 .button-down::after {
-  top: 7px;
-  left: 12px ;
   transform: rotate(225deg);
 }
-
 
 .App-logo {
   height: 40vmin;
@@ -312,9 +311,7 @@ label{
 /* add list css  */
 
 .searchForm{
-  float: left;
-  margin-top: 330px;
-  margin-left: -220px;
+  margin: 0 auto;
   background-color: rgb(242, 229, 214, 0.7);
   border-radius: 20px;
   width: 750px;
