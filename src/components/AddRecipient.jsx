@@ -11,6 +11,7 @@ function AddRecipient(props) {
   const [ unwanted, setUnwanted ] = useState("");
 
   const { user } = useContext(AuthContext)
+  // console.log("this is tthe user",user)
   const {getUserInfo} = props
 
   const handleSubmit = (e) => {
