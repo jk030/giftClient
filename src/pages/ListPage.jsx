@@ -3,6 +3,8 @@ import {useParams} from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from "axios";
 import AddGift from "../components/AddGift"
+import { Link } from "react-router-dom"
+
 //import { Button } from "react-router-dom";
     
 
@@ -46,6 +48,7 @@ return (
                     <h2>{gift.title}</h2> 
                     <img src={gift.imageGift} alt="gift_image"/>
                     <p>{gift.priceSpan}</p> 
+                    <a href={gift.link}><p>Link</p></a>
                     <p> {gift.occasion}</p>
                     <p>{gift.notes}</p>
                 </li>
