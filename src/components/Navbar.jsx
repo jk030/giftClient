@@ -29,7 +29,7 @@ function NavbarGlobal() {
         </div>
     </div>
     </Navbar>
-    <img className="imgNavbar" alt="Navbar" />
+    <div className="imgNavbar" alt="Navbar" />
     </div> 
   );
 }

@@ -59,6 +59,11 @@
   left: 160px;
   margin-bottom: 10px;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
+
+
 .rectangle {
   position: absolute;
   top: 2px;
@@ -231,17 +236,50 @@ label{
   font-size: 18px;
 }
 
-.searchForm{
-  float: left;
-  margin-top: 230px;
-}
-
 .HomePage-Container{
   margin-right: 30vh; 
   margin-top: 25vh; 
   float: right;
   width: 500px;
 }
+
+.button-container {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  
+}
+.button-down {
+  margin-bottom: 50px;
+  background: #363636;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+}
+
+.button-down:hover {
+  cursor: pointer;
+  transform: translate3d(0, 10px, 0);
+}
+
+.button-down::after {
+  content: "";
+  margin-left: 10px;
+  top: 5px; 
+  display: block;
+  width: 25px;
+  height: 25px;
+  
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+}
+
+.button-down::after {
+  transform: rotate(225deg);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -269,6 +307,127 @@ label{
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+/* add list css  */
+
+.searchForm{
+  margin: 0 auto;
+  background-color: rgb(242, 229, 214, 0.7);
+  border-radius: 20px;
+  width: 750px;
+}
+
+#search{
+  margin-top: 30px;
+}
+
+.headlineSearchForm{
+  font-weight: 500;
+  font-size: 40px;
+  margin-top: 40px;
+}
+:root {
+  --surface-color: #fef8f8;;
+  --curve: 40;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.cards {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  margin: 3rem 0vw;
+  padding: 0;
+  list-style-type: none;
+}
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;  
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card__background {      
+  width: 450px;
+  height: 300px;
+  background-color: rgb(185, 154, 117, 0.9);
+  padding-top: 50px;
+  color: #F2E5D6;
+  font-size: 20px;
+  letter-spacing: 3px;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  background-color: var(--surface-color);
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  padding: 2em;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;      
+  z-index: 1;
+}
+
+.card__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;      
+  border-radius: 50%;      
+}
+
+.card__title {
+  font-size: 25px;
+  margin: 0 0 .4em;
+  color: #6A515E;
+  font-weight: 200; 
+}
+
+.card__status {
+  font-size: .8em;
+  color: #D7BDCA;
+  font-weight: 200; 
+}
+
 
 .App-link {
   color: #61dafb;
