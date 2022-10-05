@@ -10,6 +10,7 @@ import {Link} from "react-router-dom"
 
 function HomePage() {
   const [recipientInfo, setRecipientInfo] = useState([]); 
+  console.log(recipientInfo)
   const [filteredRecipient, setFilteredRecipient] = useState([]); 
   const [search, setSearch] = useState ("")
   const handleSearch = (e) => setSearch(e.target.value);
@@ -49,27 +50,39 @@ function HomePage() {
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
           <div  className="HomePage-Container"> 
           <p className="headlineHomePage">You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/>Use GoodTimes, collect ... </p>
-          <button className="signUpbtn" href="/signup">Create account</button>
+          <a href="/signup"><button className="signUpbtn">Create account</button></a>
           </div>
+        
+          <div class="button-down"></div>
+          
 
       <div className="searchForm"> 
-          <form >
-          <label>Search for public Lists:</label>
-              <input 
-                type="email"
-                name="search"
-                value={search}
-                onChange={handleSearch}
-              />
+          <form className="form" >
+          <label className="headlineSearchForm">Search for public Lists:</label>
+              <input id="search" type="text" name="search" value={search} placeholder="Who are you looking for ?" onChange={handleSearch}/> 
             {filteredRecipient.length !== 0 && filteredRecipient.map((info) => {
             return (
-              <div key={info?._id}> 
-                <h3>This List is for: {info?.name} </h3>
-                <img src={info?.imageRecipient} alt="Recipient" width="100"/>
-                {info?.user?.userName && <h4>created by: {info?.user?.userName}</h4>}
-                <Link to={`/profilePage/${info?.user?._id}`}> <button className="signUpbtn"> see {info?.user?.userName}'s profile</button> </Link>
-                <Link to={`/listPage/${info?._id}`}> <button className="signUpbtn">See Gift List</button> </Link>
-              </div>
+              <ul class="cards"> 
+                <li> 
+                    <a href={`/listPage/${info?._id}`} class="card" > 
+                    <div class="card__background"> This List is for: <br /> {info?.name} </div>
+                    {/* <img src={info?.imageRecipient} class="card__image" alt="" alt="Recipient" /> */}
+                      <div class="card__overlay" key={info?._id}> 
+                            <div class="card__header">
+                              <svg class="card__arc" ><path /></svg>  
+                              {/* xmlns="http://www.w3.org/2000/svg" */}
+                              
+                                  <div class="card__header-text">  
+                                  <img src={info?.imageRecipient} class="card__thumb"  alt="Recipient" />
+                                      {info?.user?.userName && <h4 class="card__status"> Created by: {info?.user?.userName}</h4>}
+                                  </div>
+                                  <Link to={`/listPage/${info?._id}`}> <button className="signUpbtn">See Gift List</button> </Link>  
+                                  <Link to={`/profilePage/${info?.user?._id}`}> <button className="signUpbtn"> See {info?.user?.userName}'s Profile</button> </Link> 
+                            </div>
+                        </div>
+                    </a>
+                </li>
+              </ul>
             )
       })}
         </form>
@@ -79,3 +92,5 @@ function HomePage() {
 }
 
 export default HomePage;
+
+
