@@ -35,11 +35,11 @@ return (
     <div className="list">
 
     <div className="ContainerRecipientDetailsListPage"> 
-        <h2>{recipientInfo.name}</h2>
+        <h2>name: {recipientInfo.name}</h2>
         <img src={recipientInfo.imageRecipient} alt="Recipient" width={200}/>
-        <p>{recipientInfo.personalDetails}</p>
-        <article>{recipientInfo.preference}</article>
-        <article>{recipientInfo.unwanted}</article>
+        <p> personalDetails: {recipientInfo.personalDetails}</p>
+        <article>preference:{recipientInfo.preference}</article>
+        <article>unwanted: {recipientInfo.unwanted}</article>
     </div>
 
     <ul> 
