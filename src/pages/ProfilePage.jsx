@@ -67,7 +67,7 @@ function ProfilePage(props) {
                 return ( 
                   <div className="ContainerRecipients" key={recipient._id}> 
                     <h4 className="Details3" >Name: {recipient.name}</h4>
-                <img src={recipient.imageRecipient} alt="Recipient" style={{width: 100}}/>
+                <img src={recipient.imageRecipient} alt="Recipient" style={{width: 100}}/> <br />
                 <Link to={`/listPage/${recipient._id}`}><button className="signUpbtn">See Gift List</button></Link>
                 <button className="signUpbtn" onClick={()=> deleteRecipient(recipient._id)}>Delete Recipient</button>
             </div>   

@@ -13,14 +13,14 @@ function ListPage (props) {
     const [recipientInfo, setRecipientInfo] = useState({})
     // const [giftDetails, setGiftDetails] = useState({})
 
-    console.log(recipientInfo.gifts)
+    // console.log(recipientInfo.gifts)
 
     const getRecipientInfo = () => {
         axios
         .get(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`)
         .then((response) => {
           const recipientDetails = response.data;
-          console.log(recipientDetails)
+        //   console.log(recipientDetails)
           setRecipientInfo(recipientDetails)
           })
         .catch((error) => console.log(error));
@@ -46,7 +46,8 @@ return (
     {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
         return <li key={gift._id}>
                     <h2>{gift.title}</h2> 
-                    <img src={gift.imageGift} alt="gift_image"/>
+                    {/* TODO: find source of imageGift */}
+                    <img src={gift.imageGift} alt="Gift"/>
                     <p>{gift.priceSpan}</p> 
                     <a href={gift.link}><p>Link</p></a>
                     <p> {gift.occasion}</p>
