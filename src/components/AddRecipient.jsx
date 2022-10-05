@@ -12,6 +12,7 @@ function AddRecipient(props) {
   const [ imageRecipient, setImageRecipient ] = useState("");
 
   const { user } = useContext(AuthContext)
+  // console.log("this is tthe user",user)
   const {getUserInfo} = props
 
   const handleFileUpload = (e) => {
