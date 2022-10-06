@@ -42,18 +42,28 @@
 
 .navLink1{
   color: #B99A75;  
-  list-style-type: none;
+  text-decoration: none;
   background-color: #fff;
   border: #fff;
-  height: 7vh;}
+  letter-spacing: 6px; 
+  margin-top: 25px;
+  margin-left: 30px;
+  font-size: 15px;
+}
 
-.navLink2{
+.containerLogOut{
+  justify-content: space-around;
+  display: flex;
+}
+
+
+/* .navLink2{
   color: #B99A75;  
   background-color: #fff;
   border: #fff;
   height: 9vh;
   letter-spacing: 6px
-}
+} */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
@@ -271,6 +281,7 @@ button{
   border-radius: 10px;
   font-size: 10px;
 }
+
 .App-link {
   color: #61dafb;
 }

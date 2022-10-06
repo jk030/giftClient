@@ -13,17 +13,19 @@ function NavbarGlobal() {
       <Navbar>
           <div className="Navbar-1">
               <div className="Navbar1-1" > 
-                <Link className="GoodTimes" to="/">Good Times</Link>
+                <Link className="GoodTimes" to="/">GoodTimes</Link>
               </div>
               <div className="Navbar1-2"> 
                 {isLoggedIn && (
-                  <div>
-                    <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a> <button onClick={logOutUser} className="navLink2">Logout</button>
+                  <div className="containerLogOut">
+                    <a className="navLink1" href={`/profilePage/${user._id}`}><p>Profile</p></a> 
+                    <p onClick={logOutUser} className="navLink1">Logout</p>
                   </div>
                     )}
                 {!isLoggedIn && (
-                      <div>
-                        <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register </button></a>
+                      <div className="containerLogOut">
+                        <a className="navLink1" href={"/login"}> <p>Login</p></a> 
+                        <a className="navLink1" href={"/signup"}> <p>Register</p></a>
                       </div>
                     )}
               </div>
