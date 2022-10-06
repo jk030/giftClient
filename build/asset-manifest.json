@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3c122625.css",
+    "main.js": "/static/js/main.287e8b7b.js",
+    "static/media/annie-spratt-_XdU9Q5iFRE-unsplash.jpg": "/static/media/annie-spratt-_XdU9Q5iFRE-unsplash.cfb897ea1bb95fc876ca.jpg",
+    "index.html": "/index.html",
+    "main.3c122625.css.map": "/static/css/main.3c122625.css.map",
+    "main.287e8b7b.js.map": "/static/js/main.287e8b7b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3c122625.css",
+    "static/js/main.287e8b7b.js"
+  ]
+}
