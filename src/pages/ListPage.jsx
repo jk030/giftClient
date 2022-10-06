@@ -15,12 +15,14 @@ function ListPage (props) {
     const { recipientId } = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
     // const [giftDetails, setGiftDetails] = useState({})
+    //const [recipientGifts, setRecipientGifts] = useState ([])
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
     const [ preferences, setPreferences ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
 
-    const [edit,setEdit] = useState (false) //use the setEdit only when logged in 
+    const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
+
 
     const getRecipientInfo = () => {
         axios
@@ -37,6 +39,14 @@ function ListPage (props) {
       getRecipientInfo();
       // eslint-disable-next-line
     }, [] );
+
+    // const extractGifts = recipientInfo?.gifts?.map(gift => {
+    //     gift.push()
+    // })
+
+
+
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -68,7 +78,18 @@ function ListPage (props) {
             .catch((error) => console.log(error));
     }, []);
 
+// --> das problem ist grade erstens an die specific gift id zu kommen die du deleten willst und zweitens das du eigentlich nicht die ganze recipient info 
+// neu callen willst weil die ganze seite rerendered --> du kannst das wrascheinlich lösen wenn du eine zwischen state schaffst wo du das zwischen speichers 
+    const deleteGift = (giftId) => {
+        console.log(giftId)
+        axios
+        .delete(`${process.env.REACT_APP_API_URL}/api/gifts/${giftId}`)
+        .then(() => {
+            getRecipientInfo()
+        })
+        .catch((err) => console.log(err));
 
+    };
 
 
 
@@ -139,6 +160,7 @@ return (
                     <a href={gift.link}><p>Link</p></a>
                     <p> {gift.occasion}</p>
                     <p>{gift.notes}</p>
+                    {user._id === recipientInfo.user &&  <button onClick={()=> deleteGift(gift._id) }>Delete</button>}
                 </li>
                 
     })}
