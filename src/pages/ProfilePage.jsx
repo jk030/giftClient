@@ -1,26 +1,25 @@
-import React from "react"; //{useContext}
+import React from "react"; 
 import {useParams, useNavigate} from "react-router-dom"
+import { useState, useEffect, useContext} from "react";
 import axios from "axios";
-// import { AuthContext } from "../context/auth.context";
-// import { Button } from "react-router-dom";
-// import {Button } from "react-bootstrap"
 import { Link } from "react-router-dom";
 import AddRecipient from "../components/AddRecipient"
-//import RecipientCard from "../components/RecipientCard"
+
 import "../styling/ProfilePage.css";
 
+import { AuthContext } from "../context/auth.context";
 
-import { useState, useEffect } from "react";
+
 
 function ProfilePage(props) {
 
   const {userId} = useParams();
-
   const [userProfile, setUserProfile] = useState({})
-
-  
-  // const { authenticateUser } = useContext(AuthContext)
   const navigate = useNavigate()
+  const { user } = useContext(AuthContext)
+
+
+
 
   const getUserInfo = () => {
       axios
@@ -33,12 +32,10 @@ function ProfilePage(props) {
       .catch((error) => console.log(error));
   };
 
-
   useEffect(() => {
     getUserInfo();
     // eslint-disable-next-line
   }, [] );
-
 
   const deleteRecipient = (recipientId) => {        
     console.log(recipientId)          
@@ -51,6 +48,7 @@ function ProfilePage(props) {
       .catch((err) => console.log(err));
 
   };  
+
 
 
     return (
@@ -73,17 +71,19 @@ function ProfilePage(props) {
                       </div>
 
                     <Link to={`/listPage/${recipient._id}`}><button className="btnProfilePage">See Gift List</button></Link>
-                    <button className="btnProfilePage" onClick={()=> deleteRecipient(recipient._id)}>Delete Recipient</button>
+                    {user._id === userId &&  <button className="btnProfilePage" onClick={()=> deleteRecipient(recipient._id)}>Delete Recipient</button>}
                  </div>   
+            </div>   
+
            )
           })}
         </div>
-
+{user._id === userId &&  
         <div className="ContainerAddRecipient">
                 <h2> New Event? Create a new List! </h2>
                 <AddRecipient id={userId}  getUserInfo={getUserInfo}/>
             </div>
-
+}
 
         </div>
 
