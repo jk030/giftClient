@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 // import axios from "axios";
 import service from "../service.js";
+import "../styling/AddRecipient.css";
 
 function AddRecipient(props) {
   const [ name, setName ] = useState("");
@@ -10,7 +11,7 @@ function AddRecipient(props) {
   const [ unwanted, setUnwanted ] = useState("");
   const [ imageRecipient, setImageRecipient ] = useState("");
   const [privacy, setPrivacy] = useState(true)
-  
+
   const { user } = useContext(AuthContext)
   const {getUserInfo} = props
 
@@ -97,17 +98,18 @@ function AddRecipient(props) {
         />
 
         <label className="Details2" >Upload image: </label>
-        <input
+        <input 
           type="file"
           name="imageRecipient"
           onChange={(e) => handleFileUpload(e)}
         />
 
-        {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
-        {privacy ?<button type="button" onClick={()=> setPrivacy(false)}>Set list to private</button> : <button type="button" onClick={()=> setPrivacy(true)}>Set list to public</button>}
+    
+        {privacy ?<button  className="setListtoPrivatBtn" type="button" onClick={()=> setPrivacy(false)}>Set list to private</button> : <button className="signUpbtn" type="button" onClick={()=> setPrivacy(true)}>Set list to public</button> }
+        {privacy ?<p>! List is public now ! </p> : <p>List is private now</p>}
 
 
-        <button className="signUpbtn" type="submit">Save</button>
+        <button className="setListtoPrivatBtn" type="submit">Save</button>
         
       </form>
     </div>

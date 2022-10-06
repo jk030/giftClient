@@ -42,11 +42,10 @@
 
 .navLink1{
   color: #B99A75;  
+  list-style-type: none;
   background-color: #fff;
   border: #fff;
-  height: 7vh;
-  letter-spacing: 6px
-}
+  height: 7vh;}
 
 .navLink2{
   color: #B99A75;  
@@ -66,19 +65,27 @@
   justify-content: center
 }
 
-
 .SignupPage-Container{
   margin-left: 20vh;
+  margin-top: 20px;
   position: relative; 
   width: 500px;
 }
-
 .headline {
   font-size: 28px;
   color: #000;
   letter-spacing: 6px;
   text-align: center;
   margin-top: 70px;
+}
+
+.headlineLogin {
+  font-size: 28px;
+  color: #000;
+  letter-spacing: 6px;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
 }
 
 .Details{
@@ -254,7 +261,16 @@ label{
   flex-direction:column
 }
 
-
+button{
+  background-color: #363636;
+  color: #F2E5D6;
+  padding: 10px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  border-radius: 10px;
+  font-size: 10px;
+}
 .App-link {
   color: #61dafb;
 }

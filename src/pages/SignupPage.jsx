@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Link
 import axios from "axios";
+import "../styling/SignupPage.css";
+
+
 
 function SignupPage(props) {
   const [email, setEmail] = useState("");
@@ -35,8 +38,9 @@ function SignupPage(props) {
        <img className="imgSignUpPage" src="/Img/asma-alrashed-2ilpjYv8gXo-unsplash.jpg" alt="present"/>
             <div className="SignupPage-Container">
               <p className="headline">Create an account </p>
-              <p className="Details">Please enter your details.</p>
+             
               <form onSubmit={handleSignupSubmit} >
+              <p className="DetailsSignUpPage">Please enter your details.</p>
               <label className="Details2"> Username *</label>
                 <input 
                   type="text"
@@ -61,10 +65,12 @@ function SignupPage(props) {
                   onChange={handlePassword}
                 />
                 <button className="signUpbtn" type="submit">Create account</button>
-              </form>
-              { errorMessage && <p className="error-message">{errorMessage}</p> }
-              <p className="Details">Already have account?</p>
+                <p className="DetailsSignUpPage">Already have account?</p>
               <a className="signUpbtn" href="/login">Login</a>
+              { errorMessage && <p className="error-message">{errorMessage}</p> }
+              </form>
+           
+            
             </div>
     </div>
   )

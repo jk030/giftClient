@@ -22,9 +22,9 @@ function NavbarGlobal() {
                   </div>
                     )}
                 {!isLoggedIn && (
-                    <div>
-                      <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register </button></a>
-                    </div>
+                      <div>
+                        <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register </button></a>
+                      </div>
                     )}
               </div>
           </div>

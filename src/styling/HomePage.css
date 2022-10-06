@@ -14,9 +14,16 @@
   }
   
 .headlineHomePage{
-    font-size: 18px;
+    font-size: 22px;
+    text-align: center;
   }
 
+
+.fontGoodTimes{
+ font-size: 50px;
+ color: #B99A75;  
+ 
+}
 .createAccountBtn{
         background-color: #363636;
         color: #F2E5D6;

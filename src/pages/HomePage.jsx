@@ -11,7 +11,7 @@ function HomePage() {
   const [recipientInfo, setRecipientInfo] = useState([]); 
   const [filteredRecipient, setFilteredRecipient] = useState([]); 
   const [search, setSearch] = useState ("")
-  const { isLoggedIn, logOutUser, user } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
   
   
   const handleSearch = (e) => setSearch(e.target.value);
@@ -51,7 +51,7 @@ function HomePage() {
     <div>
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
         <div  className="HomePage-Container"> 
-            <p className="headlineHomePage">You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/>Use GoodTimes, collect ... </p>
+             <p className="headlineHomePage">You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/> Plan ahead for the <br/><strong className="fontGoodTimes">GoodTimes !</strong></p>
             {!isLoggedIn && <a href="/signup"><button className="createAccountBtn">Create account</button></a>}
         </div>
         <div className="button-container">
