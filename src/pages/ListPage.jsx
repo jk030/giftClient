@@ -57,7 +57,6 @@ function ListPage (props) {
     }
     
 
-    const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
 
     const getRecipientInfo = () => {
         axios
@@ -220,7 +219,7 @@ return (
         </ul>
     </div>
     
-    {{user._id === recipientInfo.user && display && 
+    {user._id === recipientInfo.user && display && 
     <div className="ContainerAddGift">
         <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
     </div>} 

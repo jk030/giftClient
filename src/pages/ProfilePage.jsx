@@ -72,8 +72,7 @@ function ProfilePage(props) {
 
                     <Link to={`/listPage/${recipient._id}`}><button className="btnProfilePage">See Gift List</button></Link>
                     {user._id === userId &&  <button className="btnProfilePage" onClick={()=> deleteRecipient(recipient._id)}>Delete Recipient</button>}
-                 </div>   
-            </div>   
+                 </div>     
 
            )
           })}
