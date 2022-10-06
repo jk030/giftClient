@@ -5,7 +5,7 @@ import axios from "axios";
 import AddGift from "../components/AddGift"
 import { AuthContext } from "../context/auth.context";
 import "../styling/ListPage.css";
-import service from "../service.js";
+import {uploadRecipientImage} from "../service.js";
 
 
 //import { Button } from "react-router-dom";
@@ -42,8 +42,8 @@ function ListPage (props) {
         // req.body to .create() method when creating a new movie in '/api/movies' POST route
         uploadData.append("imageRecipient", e.target.files[0]);
       
-        service
-          .uploadImage(uploadData)
+        
+          uploadRecipientImage(uploadData)
           .then(response => {
             console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state

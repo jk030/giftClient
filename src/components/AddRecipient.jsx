@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 // import axios from "axios";
-import service from "../service.js";
+import {uploadRecipientImage, createRecipient} from "../service.js";
 import "../styling/AddRecipient.css";
 
 function AddRecipient(props) {
@@ -25,8 +25,8 @@ function AddRecipient(props) {
     // req.body to .create() method when creating a new recipient in '/api/recipients' POST route
     uploadData.append("imageRecipient", e.target.files[0]);
   
-    service
-      .uploadRecipientImage(uploadData)
+    
+      uploadRecipientImage(uploadData)
       .then(response => {
         console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
@@ -41,8 +41,8 @@ function AddRecipient(props) {
     const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient, privacy }
     // const storedToken = localStorage.getItem("authToken");
 
-    service
-      .createRecipient(requestBody)
+    
+      createRecipient(requestBody)
       .then((response) => {
         getUserInfo()
         setName("")
