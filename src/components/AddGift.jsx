@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import axios from "axios";
-import service from "../service.js";
+import {uploadGiftImage, createGift} from "../service.js";
 
 function AddGift(props) {
     const [ title, setTitle ] = useState("");
@@ -19,8 +19,8 @@ function AddGift(props) {
         // req.body to .create() method when creating a new gift in '/api/gifts' POST route
         uploadData.append("imageGift", e.target.files[0]);
         
-        service
-          .uploadGiftImage(uploadData)
+        
+          uploadGiftImage(uploadData)
           .then(response => {
             console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state
@@ -38,8 +38,8 @@ function AddGift(props) {
         const requestBody = { title, priceSpan, occasion, link, notes, recipientId: recipientId, imageGift };
         console.log(requestBody);
         // const storedToken = localStorage.getItem("authToken");
-        service
-            .createGift(requestBody)
+        
+            createGift(requestBody)
             .then((response) => {
                 // reset the states to clear inputs
                 getRecipientInfo()

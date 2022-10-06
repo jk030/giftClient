@@ -48,7 +48,7 @@ const uploadGiftImage = (file) => {
 
 
 // eslint-disable-next-line
-export default {
+export {
     service,
   getRecipient,
   uploadRecipientImage,
