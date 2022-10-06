@@ -7,6 +7,7 @@ import {useState, useEffect} from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
 //import RecipientCard from "../components/RecipientCard"
+import "../styling/HomePage.css";
 
 function HomePage() {
   const [recipientInfo, setRecipientInfo] = useState([]); 
@@ -50,7 +51,7 @@ function HomePage() {
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
           <div  className="HomePage-Container"> 
           <p className="headlineHomePage">You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/>Use GoodTimes, collect ... </p>
-          <a href="/signup"><button className="signUpbtn">Create account</button></a>
+          <a href="/signup"><button className="createAccountBtn">Create account</button></a>
           </div>
         
         <div className="button-container">
@@ -61,13 +62,13 @@ function HomePage() {
           
           
 
-      <div className="searchForm" id="search"> 
-          <form className="form" >
+      <div className="searchForm"> 
+          <form >
           <label className="headlineSearchForm">Search for public Lists:</label>
               <input id="search" type="text" name="search" value={search} placeholder="Who are you looking for ?" onChange={handleSearch}/> 
             {filteredRecipient.length !== 0 && filteredRecipient.map((info) => {
             return (
-              <ul class="cards"> 
+              <ul class="cardsHomePage"> 
                 <li> 
                     <a href={`/listPage/${info?._id}`} class="card" > 
                     <div class="card__background"> This List is for: <br /> {info?.name} </div>
@@ -76,7 +77,6 @@ function HomePage() {
                             <div class="card__header">
                               <svg class="card__arc" ><path /></svg>  
                               {/* xmlns="http://www.w3.org/2000/svg" */}
-                              
                                   <div class="card__header-text">  
                                   <img src={info?.imageRecipient} class="card__thumb"  alt="Recipient" />
                                       {info?.user?.userName && <h4 class="card__status"> Created by: {info?.user?.userName}</h4>}

@@ -4,6 +4,7 @@ import { useState, useEffect , useContext} from "react"
 import axios from "axios";
 import AddGift from "../components/AddGift"
 import { AuthContext } from "../context/auth.context";
+import "../styling/ListPage.css";
 
 
 //import { Button } from "react-router-dom";
@@ -14,13 +15,14 @@ function ListPage (props) {
  //  console.log("this is the user",user)
     const { recipientId } = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
+    const [display, setDisplay] = useState(false)
     // const [giftDetails, setGiftDetails] = useState({})
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
     const [ preferences, setPreferences ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
 
-    const [edit,setEdit] = useState (false) //use the setEdit only when logged in 
+    const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
 
     const getRecipientInfo = () => {
         axios
@@ -33,11 +35,10 @@ function ListPage (props) {
         .catch((error) => console.log(error));
     };
   
-    useEffect(() => {
-      getRecipientInfo();
-      // eslint-disable-next-line
-    }, [] );
-
+    
+    const handleDisplay = () => {
+        setDisplay(!display);
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         const requestBody = { name, personalDetails, preferences, unwanted };
@@ -52,7 +53,10 @@ function ListPage (props) {
             });
     };
 
-
+    useEffect(() => {
+        getRecipientInfo();
+        // eslint-disable-next-line
+      }, [] );
 
     useEffect(() => {
         axios
@@ -77,97 +81,91 @@ if(user === null) {
 }
 
 return (
-    <div className="list">
+    <>
 
-    
-    {edit?
-     <div className="ContainerRecipientDetailsListPage"> 
-        <h2>{recipientInfo.name}</h2>
-        <img src={recipientInfo.imageRecipient} alt="Recipient" width={200}/>
-        <p>{recipientInfo.personalDetails}</p>
-        <article>{recipientInfo.preference}</article>
-        <article>{recipientInfo.unwanted}</article>
-        {edit && user._id === recipientInfo.user &&  <button onClick={()=> setEdit(false)}>Edit this Recipient</button> }
-    </div>  :     
-    
-        <form onSubmit={handleSubmit}>
-                <label>Name:</label>
-                <input
-                type="text"
-                name="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                />
+    <div className="listContainer">
+        { edit ? 
+                <div className="containerRecipientProfile">
+                    <img className="round" src={recipientInfo.imageRecipient} alt="Recipient"/>
+                    <h2>{recipientInfo.name}</h2>
+                    <p className="giftDetailsLabels">Personal Details: < br /> {recipientInfo.personalDetails}</p>
+                    <p className="giftDetailsLabels" >Likes: < br /> {recipientInfo.preference}</p>
+                    <p className="giftDetailsLabels" >Dislikes: < br /> {recipientInfo.unwanted}</p>
+                    <button className="hideBtn" onClick={handleDisplay}> { display ? "Hide Form" : "Show Adding Form"}</button>
 
-                <label>Personal Details:</label>
-                <textarea
-                type="text"
-                name="personalDetails"
-                value={personalDetails}
-                onChange={(e) => setPersonalDetails(e.target.value)}
-                />
+                </div> 
+                : 
+                <form onSubmit={handleSubmit}>
+                    <label>Name:</label>
+                    <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    />
 
-                <label>Preferences:</label>
-                <textarea
-                type="text"
-                name="preferences"
-                value={preferences}
-                onChange={(e) => setPreferences(e.target.value)}
-                />
+                    <label>Personal Details:</label>
+                    <textarea
+                    type="text"
+                    name="personalDetails"
+                    value={personalDetails}
+                    onChange={(e) => setPersonalDetails(e.target.value)}
+                    />
 
-                <label>Add Past Gifts:</label>
-                <textarea
-                type="text"
-                name="unwanted"
-                value={unwanted}
-                onChange={(e) => setUnwanted(e.target.value)}
-                />
+                    <label>Preferences:</label>
+                    <textarea
+                    type="text"
+                    name="preferences"
+                    value={preferences}
+                    onChange={(e) => setPreferences(e.target.value)}
+                    />
 
-                <button type="submit" >Update Recipient</button>
-                {/* <button onClick={deleteRecipient}>Delete Recipient</button> */}
-            </form>
-    }
+                    <label>Add Past Gifts:</label>
+                    <textarea
+                    type="text"
+                    name="unwanted"
+                    value={unwanted}
+                    onChange={(e) => setUnwanted(e.target.value)}
+                    />
 
+                    <button type="submit" >Update Recipient</button>
+                </form>
+        }
 
-    <ul> 
-    {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
-        return <li key={gift._id}>
-                    <h2>{gift.title}</h2> 
-                    {/* TODO: find source of imageGift */}
-                    <img src={gift.imageGift} alt="Gift"/>
-                    <p>{gift.priceSpan}</p> 
-                    <a href={gift.link}><p>Link</p></a>
-                    <p> {gift.occasion}</p>
-                    <p>{gift.notes}</p>
-                </li>
-                
-    })}
-    </ul>
+        <ul className="cards"> 
+            {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
+                return <li key={gift._id} className="ContainerGift">
+ 
+                            <div className="ContainerDetailsImage"> 
+                                <h2 className="giftDetailsLabels"> Gift: {gift.title}</h2> 
+                                <img className="imageRecipient"  src={gift.imageGift} alt="Gift" />
+                                <a href={gift.link} className="buyGiftLink"><p> Click here to buy gift </p></a>
+                            </div>
 
+                            <div className="giftDetails">
+                                <div className="main">
+                                    <p> Price Span: {gift.priceSpan}</p> 
+                                    <p> Occasion: {gift.occasion}</p>
+                                </div>
 
-    <div className="ContainerAddGift">
-                <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
-            </div>
-  
-
-
-  
+                                <div className="footer">
+                                    <p> Additional Notes: {gift.notes}</p>
+                                </div> 
+                            </div>
+                               
+                        </li>
+                        
+            })}
+        </ul>
+      
     </div>
+    {display && <div className="ContainerAddGift">
+        <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
+    </div>} 
+    </>
     )
 }
 
 export default ListPage 
 
 
-
-//  {Object.entries(recipientInfo.gift).map(allGifts => {
-//                 console.log("this is the ", recipientInfo.gift)
-//             return (
-//                 <div>
-//                 {!allGifts ? <></> : <>
-//             <h2>{allGifts[0].title}</h2> 
-//             <h2> {allGifts[0].occasion}</h2>
-//             </>}
-//                 </div>
-//             )
-//         })}

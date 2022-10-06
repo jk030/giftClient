@@ -57,8 +57,6 @@ function AddRecipient(props) {
   
   return (
     <div className="AddRecipient">
-      <h3>Add Recipient</h3>
-      
       <form onSubmit={handleSubmit}>
         <label className="Details2" >Name:</label>
         <input
