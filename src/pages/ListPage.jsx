@@ -143,8 +143,8 @@ return (
                     <button className="hideBtn" onClick={handleDisplay}> { display ? "Hide Form" : "Show Adding Form"}</button>
                 </div> 
                 : 
-                <form onSubmit={handleSubmit}>
-                
+                <form className="formBackground" onSubmit={handleSubmit}>
+                <h3>Edit Recipient</h3>
                     <label>Upload Image:</label>
                     <input
                     type="file"
@@ -168,7 +168,7 @@ return (
                     onChange={(e) => setPersonalDetails(e.target.value)}
                     />
 
-                    <label>Preferences:</label>
+                    <label>Likes:</label>
                     <textarea
                     type="text"
                     name="preferences"
@@ -176,7 +176,7 @@ return (
                     onChange={(e) => setPreferences(e.target.value)}
                     />
 
-                    <label>Add Past Gifts:</label>
+                    <label>Dislikes:</label>
                     <textarea
                     type="text"
                     name="unwanted"
@@ -217,13 +217,15 @@ return (
                         </li>
                         
             })}
-        </ul>
-    </div>
-    
-    {user._id === recipientInfo.user && display && 
+            {user._id === recipientInfo.user && display && 
     <div className="ContainerAddGift">
         <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
     </div>} 
+        </ul>
+        
+    </div>
+    
+    
     </>
     )
 }
