@@ -46,17 +46,34 @@
 
   .main {
     text-align: left;
-    background: deepskyblue;
     margin-bottom: 10px;
   }
 
 
 .footer{
-    background: greenyellow;
     overflow: overlay;
+    text-align: left;
 
 }
   
+.imageGift{
+    border: 1px solid #F2E5D6;
+    border-radius: 100%;
+    padding: 7px;
+    width: 90px;
+    height: 90px; 
+    margin-left: 60px
+}
+
+
+.headlineListPage{
+    font-size: 30px;
+    color: #000; 
+    font-weight: 200;
+    margin-bottom: 30px;
+  }
+
+
 .buyGiftLink{
     text-decoration: none;
     color: #F2E5D6;

@@ -81,7 +81,7 @@ function AddRecipient(props) {
           onChange={(e) => setPersonalDetails(e.target.value)}
         />
 
-        <label className="Details2" >Preferences:</label>
+        <label className="Details2" >Likes:</label>
         <input
           type="text"
           name="preferences"
@@ -89,7 +89,7 @@ function AddRecipient(props) {
           onChange={(e) => setPreferences(e.target.value)}
         />
 
-        <label className="Details2" >Things they don't want:</label>
+        <label className="Details2" >Dislikes:</label>
         <input
           type="text"
           name="unwanted"

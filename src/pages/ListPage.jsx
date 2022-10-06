@@ -190,25 +190,26 @@ return (
                       <button type="submit" onClick={handleCancel} value={inputValue}>Cancel</button>
                 </form>
         }
+       
 
         <ul className="cards"> 
+        <h3 className="headlineListPage">List : </h3>
             {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
                 return <li key={gift._id} className="ContainerGift">
- 
                             <div className="ContainerDetailsImage"> 
-                                <h2 className="giftDetailsLabels"> Gift: {gift.title}</h2> 
-                                <img className="imageRecipient"  src={gift.imageGift} alt="Gift" />
+                                <h2 className="giftDetailsLabels"> {gift.title}</h2> 
+                                <img className="imageGift"  src={gift.imageGift} alt="Gift" />
                                 <a href={gift.link} className="buyGiftLink"><p> Click here to buy gift </p></a>
                             </div>
 
                             <div className="giftDetails">
                                 <div className="main">
-                                    <p> Price Span: {gift.priceSpan}</p> 
-                                    <p> Occasion: {gift.occasion}</p>
+                                    <p> <strong>Price Span:</strong> {gift.priceSpan}</p> 
+                                    <p> <strong>Occasion:</strong> {gift.occasion}</p>
                                 </div>
 
                                 <div className="footer">
-                                    <p> Additional Notes: {gift.notes}</p>
+                                    <p>  <strong>Additional Notes: </strong><br/>{gift.notes}</p>
                                 </div> 
                             </div>
                        {user._id === recipientInfo.user &&  <button onClick={()=> deleteGift(gift._id) }>Delete</button>}
