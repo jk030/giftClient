@@ -16,8 +16,8 @@ const getRecipient = () => {
     .catch(errorHandler);
 };
 
-const uploadImage = (file) => {
-  return service.post("/upload", file)
+const uploadRecipientImage = (file) => {
+  return service.post("/recipients/upload", file)
     .then(res => res.data)
     .catch(errorHandler);
 };
@@ -40,10 +40,17 @@ const createGift = (newGift) => {
     .catch(errorHandler);
 };
 
+const uploadGiftImage = (file) => {
+  return service.post("/gifts/upload", file)
+    .then(res => res.data)
+    .catch(errorHandler);
+};
+
 export default {
     service,
   getRecipient,
-  uploadImage,
+  uploadRecipientImage,
+  uploadGiftImage,
   createRecipient,
   getGift,
   createGift,
