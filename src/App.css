@@ -224,13 +224,6 @@ label{
   pointer-events: none;
 }
 
-.ContainerAddGift{
-  /* margin-top: 90px;
-  width: 400px;
-  margin-left: 800px; */
-  margin-top: 50px;
-  text-align: center;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
