@@ -46,6 +46,8 @@ const uploadGiftImage = (file) => {
     .catch(errorHandler);
 };
 
+
+// eslint-disable-next-line
 export default {
     service,
   getRecipient,
