@@ -21,8 +21,9 @@ function HomePage() {
       .get(`${process.env.REACT_APP_API_URL}/api/recipients`,{ headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         const allRecipients = response.data;
-        setRecipientInfo(allRecipients)
-        setFilteredRecipient(allRecipients)
+        const allPublicRecipients = allRecipients.filter( recipient => { return recipient.privacy === true})
+        setRecipientInfo(allPublicRecipients)
+        setFilteredRecipient(allPublicRecipients)
         })
       .catch((error) => console.log(error));
   };
@@ -37,7 +38,7 @@ function HomePage() {
     else {
       const filtered = recipientInfo.filter(
         recipient => {
-          return recipient.name.toLowerCase().includes(search.toLowerCase())
+          return recipient.name.toLowerCase().includes(search.toLowerCase()) || recipient.user.userName.toLowerCase().includes(search.toLowerCase())
         }
       )
       setFilteredRecipient(filtered);

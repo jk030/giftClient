@@ -10,15 +10,16 @@ function AddRecipient(props) {
   const [ preferences, setPreferences ] = useState("");
   const [ unwanted, setUnwanted ] = useState("");
   const [ imageRecipient, setImageRecipient ] = useState("");
-
+  const [privacy, setPrivacy] = useState(true)
+  
   const { user } = useContext(AuthContext)
-  // console.log("this is tthe user",user)
   const {getUserInfo} = props
+
 
   const handleFileUpload = (e) => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
- 
     const uploadData = new FormData();
+ 
  
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new movie in '/api/movies' POST route
@@ -37,7 +38,7 @@ function AddRecipient(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient }
+    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient, privacy }
     // const storedToken = localStorage.getItem("authToken");
 
     service
@@ -49,6 +50,8 @@ function AddRecipient(props) {
         setPreferences("")
         setUnwanted("")
         setImageRecipient("")
+        setPrivacy(true)
+
         // props.refreshRecipients();
       })
       .catch((error) => console.log(error))
@@ -99,7 +102,8 @@ function AddRecipient(props) {
           
           onChange={(e) => handleFileUpload(e)}
         />
-
+         {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
+        {privacy ?<button type="button" onClick={()=> setPrivacy(false)}>Set list to private</button> : <button type="button" onClick={()=> setPrivacy(true)}>Set list to public</button>}
 
         <button className="signUpbtn" type="submit">Save</button>
         

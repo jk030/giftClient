@@ -20,7 +20,7 @@ function ListPage (props) {
     const [ personalDetails, setPersonalDetails ] = useState("");
     const [ preferences, setPreferences ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
-
+    const [privacy, setPrivacy] = useState(true)
     const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
 
     const getRecipientInfo = () => {
@@ -34,22 +34,18 @@ function ListPage (props) {
         .catch((error) => console.log(error));
     };
   
+
     useEffect(() => {
       getRecipientInfo();
-      // eslint-disable-next-line
+
     }, [] );
-
-    // const extractGifts = recipientInfo?.gifts?.map(gift => {
-    //     gift.push()
-    // })
-
 
 
     
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const requestBody = { name, personalDetails, preferences, unwanted };
+        const requestBody = { name, personalDetails, preferences, unwanted, privacy };
         
         axios
         // TODO: will need to check the get route i.e. listPage OR recipientPage 
@@ -62,10 +58,9 @@ function ListPage (props) {
     };
 
 
-
+//--> this is the get route to update the recipient information
     useEffect(() => {
         axios
-        // TODO: will need to check the get route i.e. listPage OR recipientPage 
             .get(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`)
             .then((response) => {
                 const oneRecipient = response.data;
@@ -73,12 +68,13 @@ function ListPage (props) {
                 setPersonalDetails(oneRecipient.personalDetails);
                 setPreferences(oneRecipient.preferences);
                 setUnwanted(oneRecipient.unwanted);
+                setPrivacy(oneRecipient.privacy)
             })
             .catch((error) => console.log(error));
     }, []);
 
-// --> das problem ist grade erstens an die specific gift id zu kommen die du deleten willst und zweitens das du eigentlich nicht die ganze recipient info 
-// neu callen willst weil die ganze seite rerendered --> du kannst das wrascheinlich lösen wenn du eine zwischen state schaffst wo du das zwischen speichers 
+
+//--> delete gift route
     const deleteGift = (giftId) => {
         console.log(giftId)
         axios
@@ -107,6 +103,7 @@ return (
         <p>{recipientInfo.personalDetails}</p>
         <article>{recipientInfo.preference}</article>
         <article>{recipientInfo.unwanted}</article>
+        {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
         {edit && user._id === recipientInfo.user &&  <button onClick={()=> setEdit(false)}>Edit this Recipient</button> }
     </div>  :     
     
@@ -142,9 +139,8 @@ return (
                 value={unwanted}
                 onChange={(e) => setUnwanted(e.target.value)}
                 />
-
+                {privacy ?<button type="button" onClick={()=> setPrivacy(false)}>Set list to private</button> : <button type="button" onClick={()=> setPrivacy(true)}>Set list to public</button>}
                 <button type="submit" >Update Recipient</button>
-                {/* <button onClick={deleteRecipient}>Delete Recipient</button> */}
             </form>
     }
 
