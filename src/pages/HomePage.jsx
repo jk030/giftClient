@@ -3,8 +3,9 @@ import React from "react"
 import {useState, useEffect, useContext} from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
-import { AuthContext } from "../context/auth.context";
+import "../styling/HomePage.css";
 
+import { AuthContext } from "../context/auth.context";
 
 function HomePage() {
   const [recipientInfo, setRecipientInfo] = useState([]); 
@@ -51,34 +52,27 @@ function HomePage() {
         <img className="imgHomePage" src="/Img/mia-golic-6JtuGvLzh20-unsplash.jpg" alt="gift"/> 
         <div  className="HomePage-Container"> 
             <p className="headlineHomePage">You're a last minute shopper? Always late with buying presents? Everytime the same hustel? <br/>Use GoodTimes, collect ... </p>
-            {!isLoggedIn && <a href="/signup"><button className="signUpbtn">Create account</button></a>}
+            {!isLoggedIn && <a href="/signup"><button className="createAccountBtn">Create account</button></a>}
         </div>
-        
         <div className="button-container">
             <a href="#search">
               <div className="button-down"></div>
             </a>
         </div>
-          
-          
 
-      <div className="searchForm" id="search"> 
-
-          <form className="form" >
+      <div className="searchForm"> 
+          <form >
           <label className="headlineSearchForm">Search for public Lists:</label>
               <input id="search" type="text" name="search" value={search} placeholder="Who are you looking for ?" onChange={handleSearch}/> 
             {filteredRecipient.length !== 0 && filteredRecipient.map((info) => {
             return (
-              <ul className="cards" key={info?._id}> 
+              <ul className="cardsHomePage" key={info?._id}> 
                 <li> 
                     <a href={`/listPage/${info?._id}`} className="card" > 
                     <div className="card__background"> This List is for: <br /> {info?.name} </div>
-                    {/* <img src={info?.imageRecipient} class="card__image" alt="" alt="Recipient" /> */}
                       <div className="card__overlay" key={info?._id}> 
                             <div className="card__header">
                               <svg className="card__arc" ><path /></svg>  
-                              {/* xmlns="http://www.w3.org/2000/svg" */}
-                              
                                   <div className="card__header-text">  
                                   <img src={info?.imageRecipient} className="card__thumb"  alt="Recipient" />
                                       {info?.user?.userName && <h4 className="card__status"> Created by: {info?.user?.userName}</h4>}
@@ -91,7 +85,6 @@ function HomePage() {
                 </li>
               </ul>
               )})}
-
           </form>
       </div>
     </div>

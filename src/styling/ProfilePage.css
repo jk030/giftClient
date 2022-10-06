@@ -1,0 +1,108 @@
+.btnProfilePage{
+    background-color: #363636;
+    color: #F2E5D6;
+    /* margin-top: 25px; */
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 10px;
+    font-size: 10px;
+    margin-top: 40px;
+    margin-right: 10px;
+  }
+  
+  
+  .btnProfilePage:hover {
+    background: #728d7a;
+    border-color: darken(#728d7a, 5%);
+    transition: background-color 1s ease-out;
+  }
+
+
+  .imageRecipient{
+    border: 1px solid #F2E5D6;
+    border-radius: 100%;
+    padding: 7px;
+    width: 90px;
+    height: 90px; 
+    margin-left: 30px
+}
+
+.ContainerRecipients{
+    background-color:rgb(242,	229, 214, 0.8); 
+    box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+    width: 450px;
+    height: 150px;
+    margin-bottom: 20px;
+    margin-left: 300px;
+    border-radius: 6px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+  }
+
+  .ContainerProfileInfo{
+    position: relative;
+    margin-top: 40px; 
+    margin-left: 20px;
+    padding: 20px;
+  }
+  
+  .ContainerGiftList{
+    margin-top: 50px;
+    justify-content: center;
+  }
+  
+  
+  .ContainerAddRecipient{
+    margin-top: 90px;
+    padding-right: 60px;
+    margin-left: 350px ;
+  }
+
+
+  .imageGiftHomePage {
+    position: relative;
+    z-index: 1;
+    top: 150px;
+    left: 120px;
+    margin-bottom: 10px;
+  }
+  
+  .rectangle {
+    position: absolute;
+    top: 2px;
+    left: 100px;
+    margin-bottom: 10px;
+    width: 400px;
+  }
+
+  .headlineList{
+    font-size: 30px;
+    color: #000; 
+    font-weight: 200;
+    margin-left: 450px;
+    margin-bottom: 30px;
+  }
+
+  .headlinePofile{
+    position: absolute;
+    top: 5%;
+    left: 65%;
+    align-items: center;
+    font-size: 30px;
+    color: #B99A75;  
+
+  }
+
+.DetailName{
+    letter-spacing: 3px;
+    margin-top: 30px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  

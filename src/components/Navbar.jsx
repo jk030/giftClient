@@ -9,27 +9,27 @@ function NavbarGlobal() {
 
 
   return (
-   <div> 
-    <Navbar>
-    <div className="Navbar-1">
-        <div className="Navbar1-1" > 
-         <Link className="GoodTimes" to="/">Good Times</Link>
-        </div>
-        <div className="Navbar1-2"> 
-      {isLoggedIn && (
-        <div>
-          <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a> <button onClick={logOutUser} className="navLink2">Logout</button>
+   <div className="navbar-container"> 
+      <Navbar>
+          <div className="Navbar-1">
+              <div className="Navbar1-1" > 
+                <Link className="GoodTimes" to="/">Good Times</Link>
+              </div>
+              <div className="Navbar1-2"> 
+                {isLoggedIn && (
+                  <div>
+                    <a href={`/profilePage/${user._id}`}><button className="navLink1">Profile</button></a> <button onClick={logOutUser} className="navLink2">Logout</button>
+                  </div>
+                    )}
+                {!isLoggedIn && (
+                    <div>
+                      <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register </button></a>
+                    </div>
+                    )}
+              </div>
           </div>
-          )}
-      {!isLoggedIn && (
-            <div>
-              <a href={"/login"}> <button className="navLink1">Login</button></a> <a href={"/signup"}> <button className="navLink2">Register </button></a>
-            </div>
-          )}
-        </div>
-    </div>
-    </Navbar>
-    <div className="imgNavbar" alt="Navbar" />
+      </Navbar>
+      <div className="imgNavbar" alt="Navbar" />
     </div> 
   );
 }

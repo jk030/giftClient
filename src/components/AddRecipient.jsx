@@ -59,9 +59,11 @@ function AddRecipient(props) {
   
   return (
     <div className="AddRecipient">
+
       <h3>Add Recipient</h3>
       
       <form onSubmit={handleSubmit} encType="multipart/form-data">
+
         <label className="Details2" >Name:</label>
         <input
           type="text"
