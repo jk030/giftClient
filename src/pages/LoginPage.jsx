@@ -3,13 +3,15 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context"; 
 
+
 // const API_URL = "http://localhost:5005";
 
 function LoginPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-  
+
+
   const navigate = useNavigate();
 
   const { storeToken, authenticateUser } = useContext(AuthContext);
@@ -36,6 +38,7 @@ function LoginPage(props) {
   
   return (
     <div >
+        
           <img className="imgSignUpPage" src="/Img/annie-spratt-7jKyakBu3vM-unsplash.jpg" alt="present"/>
               <div className="SignupPage-Container">
                   <p className="headline">Login</p>

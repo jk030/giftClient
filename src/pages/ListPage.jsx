@@ -10,18 +10,18 @@ import { AuthContext } from "../context/auth.context";
     
 
 function ListPage (props) {
-   const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
  //  console.log("this is the user",user)
     const { recipientId } = useParams();
-    const [recipientInfo, setRecipientInfo] = useState({})
+    const [ recipientInfo, setRecipientInfo] = useState({})
     // const [giftDetails, setGiftDetails] = useState({})
     //const [recipientGifts, setRecipientGifts] = useState ([])
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
     const [ preferences, setPreferences ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
-    const [privacy, setPrivacy] = useState(true)
-    const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
+    const [ privacy, setPrivacy] = useState(true)
+    const [ edit,setEdit] = useState (true) //use the setEdit only when logged in 
 
     const getRecipientInfo = () => {
         axios
@@ -88,9 +88,9 @@ function ListPage (props) {
 
 
 
-if(user === null) {
-    return <p>Loading...</p>
-}
+// if(user === null) {
+//     return <p>Loading...</p>
+// }
 
 return (
     <div className="list">
@@ -104,7 +104,7 @@ return (
         <article>{recipientInfo.preference}</article>
         <article>{recipientInfo.unwanted}</article>
         {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
-        {edit && user._id === recipientInfo.user &&  <button onClick={()=> setEdit(false)}>Edit this Recipient</button> }
+        {edit && user?._id === recipientInfo.user &&  <button onClick={()=> setEdit(false)}>Edit this Recipient</button> }
     </div>  :     
     
         <form onSubmit={handleSubmit}>
@@ -155,13 +155,13 @@ return (
                     <a href={gift.link}><p>Link</p></a>
                     <p> {gift.occasion}</p>
                     <p>{gift.notes}</p>
-                    {user._id === recipientInfo.user &&  <button onClick={()=> deleteGift(gift._id) }>Delete</button>}
+                    {user?._id === recipientInfo.user &&  <button onClick={()=> deleteGift(gift._id) }>Delete</button>}
                 </li>
                 
     })}
     </ul>
 
-    {user._id === recipientInfo.user &&
+    {user?._id === recipientInfo.user &&
         <div className="ContainerAddGift">
                 <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
         </div>
