@@ -162,7 +162,7 @@ Gift model
 
 ## API Endpoints (backend routes)
 
-- GET `/` Home Page
+- GET `/`
 - POST `/auth/signup`
   - body:
     - username
