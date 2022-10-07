@@ -20,7 +20,7 @@ function ListPage (props) {
     //const [recipientGifts, setRecipientGifts] = useState ([])
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
-    const [ preferences, setPreferences ] = useState("");
+    const [ preference, setPreference ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
 
     const [privacy, setPrivacy] = useState(true)
@@ -79,7 +79,7 @@ function ListPage (props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const requestBody = { name, personalDetails, preferences, unwanted, imageRecipient, privacy };
+        const requestBody = { name, personalDetails, preference, unwanted, imageRecipient, privacy };
 
         
         axios
@@ -104,7 +104,7 @@ function ListPage (props) {
                 const oneRecipient = response.data;
                 setName(oneRecipient.name);
                 setPersonalDetails(oneRecipient.personalDetails);
-                setPreferences(oneRecipient.preferences);
+                setPreference(oneRecipient.preference);
                 setUnwanted(oneRecipient.unwanted);
                 setPrivacy(oneRecipient.privacy)
             })
@@ -168,12 +168,12 @@ return (
                     onChange={(e) => setPersonalDetails(e.target.value)}
                     />
 
-                    <label>Preferences:</label>
+                    <label>Preference:</label>
                     <textarea
                     type="text"
-                    name="preferences"
-                    value={preferences}
-                    onChange={(e) => setPreferences(e.target.value)}
+                    name="preference"
+                    value={preference}
+                    onChange={(e) => setPreference(e.target.value)}
                     />
 
                     <label>Add Past Gifts:</label>

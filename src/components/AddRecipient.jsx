@@ -7,7 +7,7 @@ import "../styling/AddRecipient.css";
 function AddRecipient(props) {
   const [ name, setName ] = useState("");
   const [ personalDetails, setPersonalDetails ] = useState("");
-  const [ preferences, setPreferences ] = useState("");
+  const [ preference, setPreference ] = useState("");
   const [ unwanted, setUnwanted ] = useState("");
   const [ imageRecipient, setImageRecipient ] = useState("");
   const [privacy, setPrivacy] = useState(true)
@@ -38,7 +38,7 @@ function AddRecipient(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient, privacy }
+    const requestBody = { name, personalDetails, preference, unwanted, userId: user._id, userName: user.userName, imageRecipient, privacy }
     // const storedToken = localStorage.getItem("authToken");
 
     
@@ -47,7 +47,7 @@ function AddRecipient(props) {
         getUserInfo()
         setName("")
         setPersonalDetails("")
-        setPreferences("")
+        setPreference("")
         setUnwanted("")
         setImageRecipient("")
         setPrivacy(true)
@@ -81,12 +81,12 @@ function AddRecipient(props) {
           onChange={(e) => setPersonalDetails(e.target.value)}
         />
 
-        <label className="Details2" >Preferences:</label>
+        <label className="Details2" >Preference:</label>
         <input
           type="text"
-          name="preferences"
-          value={preferences}
-          onChange={(e) => setPreferences(e.target.value)}
+          name="preference"
+          value={preference}
+          onChange={(e) => setPreference(e.target.value)}
         />
 
         <label className="Details2" >Things they don't want:</label>
