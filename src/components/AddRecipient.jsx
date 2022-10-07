@@ -1,8 +1,8 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 // import axios from "axios";
-import service from "../service.js";
-
+import {uploadRecipientImage, createRecipient} from "../service.js";
+import "../styling/AddRecipient.css";
 
 function AddRecipient(props) {
   const [ name, setName ] = useState("");
@@ -11,7 +11,7 @@ function AddRecipient(props) {
   const [ unwanted, setUnwanted ] = useState("");
   const [ imageRecipient, setImageRecipient ] = useState("");
   const [privacy, setPrivacy] = useState(true)
-  
+
   const { user } = useContext(AuthContext)
   const {getUserInfo} = props
 
@@ -22,11 +22,11 @@ function AddRecipient(props) {
  
  
     // imageUrl => this name has to be the same as in the model since we pass
-    // req.body to .create() method when creating a new movie in '/api/movies' POST route
+    // req.body to .create() method when creating a new recipient in '/api/recipients' POST route
     uploadData.append("imageRecipient", e.target.files[0]);
   
-    service
-      .uploadImage(uploadData)
+    
+      uploadRecipientImage(uploadData)
       .then(response => {
         console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
@@ -41,8 +41,8 @@ function AddRecipient(props) {
     const requestBody = { name, personalDetails, preferences, unwanted, userId: user._id, userName: user.userName, imageRecipient, privacy }
     // const storedToken = localStorage.getItem("authToken");
 
-    service
-      .createRecipient(requestBody)
+    
+      createRecipient(requestBody)
       .then((response) => {
         getUserInfo()
         setName("")
@@ -60,9 +60,11 @@ function AddRecipient(props) {
   
   return (
     <div className="AddRecipient">
-      <h3>Add Recipient</h3>
+
+     
       
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <h3>Add Recipient</h3>
         <label className="Details2" >Name:</label>
         <input
           type="text"
@@ -79,7 +81,7 @@ function AddRecipient(props) {
           onChange={(e) => setPersonalDetails(e.target.value)}
         />
 
-        <label className="Details2" >Preferences:</label>
+        <label className="Details2" >Likes:</label>
         <input
           type="text"
           name="preferences"
@@ -87,7 +89,7 @@ function AddRecipient(props) {
           onChange={(e) => setPreferences(e.target.value)}
         />
 
-        <label className="Details2" >Things they dont want:</label>
+        <label className="Details2" >Dislikes:</label>
         <input
           type="text"
           name="unwanted"
@@ -96,16 +98,18 @@ function AddRecipient(props) {
         />
 
         <label className="Details2" >Upload image: </label>
-        <input
+        <input 
           type="file"
           name="imageRecipient"
-          
           onChange={(e) => handleFileUpload(e)}
         />
-         {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
-        {privacy ?<button type="button" onClick={()=> setPrivacy(false)}>Set list to private</button> : <button type="button" onClick={()=> setPrivacy(true)}>Set list to public</button>}
 
-        <button className="signUpbtn" type="submit">Save</button>
+    
+        {privacy ?<button  className="setListtoPrivatBtn" type="button" onClick={()=> setPrivacy(false)}>Set list to private</button> : <button className="signUpbtn" type="button" onClick={()=> setPrivacy(true)}>Set list to public</button> }
+        {privacy ?<p>! List is public now ! </p> : <p>List is private now</p>}
+
+
+        <button className="setListtoPrivatBtn" type="submit">Save</button>
         
       </form>
     </div>

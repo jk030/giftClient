@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import axios from "axios";
-import service from "../service.js";
+import {uploadGiftImage, createGift} from "../service.js";
 
 function AddGift(props) {
     const [ title, setTitle ] = useState("");
@@ -19,8 +19,8 @@ function AddGift(props) {
         // req.body to .create() method when creating a new gift in '/api/gifts' POST route
         uploadData.append("imageGift", e.target.files[0]);
         
-        service
-          .uploadImage(uploadData)
+        
+          uploadGiftImage(uploadData)
           .then(response => {
             console.log("response is: ", response);
             // response carries "fileUrl" which we can use to update the state
@@ -38,8 +38,8 @@ function AddGift(props) {
         const requestBody = { title, priceSpan, occasion, link, notes, recipientId: recipientId, imageGift };
         console.log(requestBody);
         // const storedToken = localStorage.getItem("authToken");
-        service
-            .createGift(requestBody)
+        
+            createGift(requestBody)
             .then((response) => {
                 // reset the states to clear inputs
                 getRecipientInfo()
@@ -56,7 +56,7 @@ function AddGift(props) {
     }
 
     return (
-        <div className="AddRecipient">
+        <div className="AddGift">
             <h3>Add New Gift</h3>
             <form onSubmit={handleSubmit}>
                 <label className="Details2" >Title: </label>
@@ -72,7 +72,7 @@ function AddGift(props) {
                     type="number"
                     name="priceSpan"
                     value={priceSpan}
-                    onChange={(e) => setPriceSpan(Number(e.target.value))}
+                    onChange={(e) => setPriceSpan(e.target.value)}
                 />
 
                 <label className="Details2" >Occasion: </label>
@@ -102,8 +102,7 @@ function AddGift(props) {
                 <label className="Details2" >Upload image: </label>
                 <input
                     type="file"
-                    name="imageGift"
-
+                    name="imageGift"                    
                     onChange={(e) => handleFileUpload(e)}
                 />
 

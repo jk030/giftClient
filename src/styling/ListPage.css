@@ -1,0 +1,155 @@
+/* Gift list listPage  */
+
+.listContainer {
+    margin-top: 20px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ContainerGift{
+    background-color: rgb(185, 154, 117, 0.9);
+	border-radius: 10px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #F2E5D6;
+	padding-top: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    flex-flow: row wrap;
+    text-align: center; 
+    margin-bottom: 20px;
+    min-width: 500px;
+  }
+
+  .ContainerDetailsImage{
+    display:flex;
+    justify-content: center;
+    flex-direction:column
+  }
+
+  .giftDetailsLabels{
+    letter-spacing: 3px;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .giftDetails {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+
+
+  .main {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+
+.footer{
+    overflow: overlay;
+    text-align: left;
+
+}
+  
+.imageGift{
+    border: 1px solid #F2E5D6;
+    border-radius: 100%;
+    padding: 7px;
+    width: 90px;
+    height: 90px; 
+    margin-left: 60px
+}
+
+
+.headlineListPage{
+    font-size: 30px;
+    color: #000; 
+    font-weight: 200;
+    margin-bottom: 30px;
+  }
+
+
+.buyGiftLink{
+    text-decoration: none;
+    color: #F2E5D6;
+}
+
+
+.hideBtn{
+    background-color: #363636;
+    color: #F2E5D6;
+    padding: 10px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+
+  
+  /* end Gift list listPage  */
+
+
+
+  /* Profile Recipient  */
+
+  .containerRecipientProfile {
+    background-color: rgb(185, 154, 117, 0.9);
+    text-align: center;
+    width: 350px;
+    height: 400px;
+    border-radius: 10px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #F2E5D6;
+    padding-top: 40px;
+}
+
+.formAddGift {
+    width: 200px;
+    padding-top: 7px;
+  }
+
+
+  /* form css */
+
+  textarea {
+    width: 300px;
+    background: #D9D9D9;
+    width: 65%;
+    color: #000;
+    border: none;
+    padding: 9px;
+    margin: 5px;
+    border-radius: 10px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  textarea:focus {
+    color: #B99A75;
+    outline: none;
+    font-size: 1em;
+    transition: .8s all ease;
+  }
+  
+  label{
+    margin-top: 10px;
+  }
+  .formBackground{
+    background-color:#B99A75;
+    border-radius: 10px;
+    padding-top: 20px;
+  }
+
+  /* add Gift */
+
+  .ContainerAddGift{
+    margin-top: 50px;
+    text-align: center;
+    width: 500px;
+  }

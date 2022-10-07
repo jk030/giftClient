@@ -41,7 +41,7 @@ function LoginPage(props) {
         
           <img className="imgSignUpPage" src="/Img/annie-spratt-7jKyakBu3vM-unsplash.jpg" alt="present"/>
               <div className="SignupPage-Container">
-                  <p className="headline">Login</p>
+                  <p className="headlineLogin">Login</p>
                   <form onSubmit={handleLoginSubmit}>
                     <label>Email:</label>
                     <input 
@@ -59,10 +59,11 @@ function LoginPage(props) {
                       onChange={handlePassword}
                     />
                     <button className="signUpbtn" type="submit">Login</button>
-                  </form>
-                  { errorMessage && <p className="error-message">{errorMessage}</p> }
+                    { errorMessage && <p className="error-message">{errorMessage}</p> }
                     <p className="Details" >Don't have an account yet?</p>
                     <Link className="signUpbtn" to={"/signup"}> Sign Up</Link>
+                  </form>
+               
               </div>
     </div>
   )

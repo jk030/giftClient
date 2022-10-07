@@ -2,7 +2,7 @@ import axios from "axios";
 
 const service = axios.create({
   // make sure you use PORT = 5005 (the port where our server is running)
-  baseURL: "http://localhost:5005/api"
+  baseURL: `${process.env.REACT_APP_API_URL}/api`
   // withCredentials: true // => you might need this option if using cookies and sessions
 });
 
@@ -16,8 +16,8 @@ const getRecipient = () => {
     .catch(errorHandler);
 };
 
-const uploadImage = (file) => {
-  return service.post("/upload", file)
+const uploadRecipientImage = (file) => {
+  return service.post("/recipients/upload", file)
     .then(res => res.data)
     .catch(errorHandler);
 };
@@ -40,10 +40,19 @@ const createGift = (newGift) => {
     .catch(errorHandler);
 };
 
-export default {
+const uploadGiftImage = (file) => {
+  return service.post("/gifts/upload", file)
+    .then(res => res.data)
+    .catch(errorHandler);
+};
+
+
+// eslint-disable-next-line
+export {
     service,
   getRecipient,
-  uploadImage,
+  uploadRecipientImage,
+  uploadGiftImage,
   createRecipient,
   getGift,
   createGift,

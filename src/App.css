@@ -1,12 +1,16 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-container {
+  width: 100vw;
 }
 
 .imgNavbar{
   background: url(../public/Img/annie-spratt-_XdU9Q5iFRE-unsplash.jpg);
   background-repeat: no-repeat;
-  width: 100%;
+  width: 100vw;
   height: 100px;
   background-size: cover;
 }
@@ -38,38 +42,32 @@
 
 .navLink1{
   color: #B99A75;  
+  text-decoration: none;
   background-color: #fff;
   border: #fff;
-  height: 7vh;
-  letter-spacing: 6px
+  letter-spacing: 6px; 
+  margin-top: 25px;
+  margin-left: 30px;
+  font-size: 15px;
 }
 
-.navLink2{
+.containerLogOut{
+  justify-content: space-around;
+  display: flex;
+}
+
+
+/* .navLink2{
   color: #B99A75;  
   background-color: #fff;
   border: #fff;
   height: 9vh;
   letter-spacing: 6px
-}
-
-.imageGiftHomePage {
-  position: relative;
-  z-index: 1;
-  top: 150px;
-  left: 160px;
-  margin-bottom: 10px;
-}
+} */
 
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700);
 @import url(https://raw.github.com/FortAwesome/Font-Awesome/master/docs/assets/css/font-awesome.min.css);
 
-
-.rectangle {
-  position: absolute;
-  top: 2px;
-  left: 155px;
-  margin-bottom: 10px;
-}
 
 .Profile{
   display: flex;
@@ -77,64 +75,27 @@
   justify-content: center
 }
 
-.ContainerProfileInfo{
-  position: relative;
-  top: 40px; 
-  left: 20px;
-  width: 600px;
-  padding: 20px;
-}
-
-.headlinePofile{
-  position: absolute;
-  top: 5%;
-  left: 70%;
-  font-size: 30px;
-  color: #B99A75;  
-  /* transform: translate(); */
-}
-.headlineList{
-  font-size: 30px;
-  color: #000; 
-  font-weight: 200;
-  margin-left: 300px;
-}
-.ContainerGiftList{
-  margin-top: 50px;
-  margin-right: 200px;
-  justify-content: center;
-  padding-right: 80px;
-}
-
-.ContainerRecipients{
-  background-color:rgb(242,	229, 214, 0.8); 
-  width: 450px;
-  height: 150px;
-  margin-bottom: 20px;
-  margin-left: 300px;
-  border-radius: 6px;
-  padding: 5px;
-}
-
-
-.ContainerAddRecipient{
-  margin-top: 90px;
-  padding-right: 60px;
-  margin-left: 350px ;
-}
-
 .SignupPage-Container{
   margin-left: 20vh;
+  margin-top: 20px;
   position: relative; 
   width: 500px;
 }
-
 .headline {
   font-size: 28px;
   color: #000;
   letter-spacing: 6px;
   text-align: center;
   margin-top: 70px;
+}
+
+.headlineLogin {
+  font-size: 28px;
+  color: #000;
+  letter-spacing: 6px;
+  text-align: center;
+  margin-top: 70px;
+  margin-bottom: 30px;
 }
 
 .Details{
@@ -168,10 +129,6 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.ContainerRecipientDetailsListPage{
-  float: left;
 }
 
 input {
@@ -224,24 +181,6 @@ label{
   width: 300px
 }
 
-.imgHomePage{
-  float: left;
-  margin-left: 35vh;
-  margin-top: 7vh;
-  height: auto;
-  width: 300px
-}
-
-.headlineHomePage{
-  font-size: 18px;
-}
-
-.HomePage-Container{
-  margin-right: 30vh; 
-  margin-top: 25vh; 
-  float: right;
-  width: 500px;
-}
 
 .button-container {
   position: relative;
@@ -285,11 +224,6 @@ label{
   pointer-events: none;
 }
 
-.ContainerAddGift{
-  margin-top: 90px;
-  width: 400px;
-  margin-left: 800px;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -310,124 +244,36 @@ label{
 
 /* add list css  */
 
-.searchForm{
-  margin: 0 auto;
-  background-color: rgb(242, 229, 214, 0.7);
-  border-radius: 20px;
-  width: 750px;
+.round {
+  flex-shrink: 0;  
+	border: 1px solid #F2E5D6;
+	border-radius: 100%;
+	padding: 7px;
+  width: 150px;
+  height: 150px; 
 }
 
-#search{
-  margin-top: 30px;
+.editBtn{
+  margin-top: 10px;
 }
 
-.headlineSearchForm{
-  font-weight: 500;
-  font-size: 40px;
-  margin-top: 40px;
-}
-:root {
-  --surface-color: #fef8f8;;
-  --curve: 40;
+
+.ContainerDetailsImage{
+  display:flex;
+  justify-content: center;
+  flex-direction:column
 }
 
-* {
-  box-sizing: border-box;
-}
-
-.cards {
-  display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-  margin: 3rem 0vw;
-  padding: 0;
-  list-style-type: none;
-}
-
-.card {
-  position: relative;
-  display: block;
-  height: 100%;  
-  border-radius: calc(var(--curve) * 1px);
-  overflow: hidden;
-  text-decoration: none;
-}
-
-.card__background {      
-  width: 450px;
-  height: 300px;
-  background-color: rgb(185, 154, 117, 0.9);
-  padding-top: 50px;
+button{
+  background-color: #363636;
   color: #F2E5D6;
-  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  text-transform: uppercase;
   letter-spacing: 3px;
+  border-radius: 10px;
+  font-size: 10px;
 }
-
-.card__overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;      
-  border-radius: calc(var(--curve) * 1px);    
-  background-color: var(--surface-color);
-  transform: translateY(100%);
-  transition: .2s ease-in-out;
-}
-
-.card:hover .card__overlay {
-  transform: translateY(0);
-}
-
-.card__header {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 2em;
-  padding: 2em;
-  border-radius: calc(var(--curve) * 1px) 0 0 0;    
-  background-color: var(--surface-color);
-  transform: translateY(-100%);
-  transition: .2s ease-in-out;
-}
-
-.card__arc {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  bottom: 100%;
-  right: 0;      
-  z-index: 1;
-}
-
-.card__arc path {
-  fill: var(--surface-color);
-  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
-}       
-
-.card:hover .card__header {
-  transform: translateY(0);
-}
-
-.card__thumb {
-  flex-shrink: 0;
-  width: 50px;
-  height: 50px;      
-  border-radius: 50%;      
-}
-
-.card__title {
-  font-size: 25px;
-  margin: 0 0 .4em;
-  color: #6A515E;
-  font-weight: 200; 
-}
-
-.card__status {
-  font-size: .8em;
-  color: #D7BDCA;
-  font-weight: 200; 
-}
-
 
 .App-link {
   color: #61dafb;
