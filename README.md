@@ -13,20 +13,13 @@ The focus of GiftMaster is making gift-giving simpler and reducing gift anxiety.
 -  **Login:** As a user I can login to the platform so that I can start creating and managing wish lists
 -  **Logout:** As a user I can logout from the platform so no one else can modify my information
 -  **Check profile** As a user I can check my profile and wish lists
--  **Read recipients details** As a user I can get a random element from my backlog
--  **Add recipients** As a user I can add elements to my wish lists
--  **Edit recipients** As a user I can mark elements in my backlog as done
--  **Delete recipients** As a user I can delete elements from my wish lists
--  **Read gifts details** As a user I can get a random element from my backlog
--  **Add gifts** As a user I can add elements to my wish lists
--  **Delete gifts** As a user I can delete elements from my wish lists
-
-## Backlog
-
-- Friends list
-- Recommendations from friends
-- Books media
-- Comics media
+-  **Read recipients details** As a user I can get information about a recipient
+-  **Add recipients** As a user I can add recipients to my profile
+-  **Edit recipients** As a user I can edit recipients in my profile
+-  **Delete recipients** As a user I can delete recipients from my profile
+-  **Read gifts details** As a user I can get information about a gift for a recipient
+-  **Add gifts** As a user I can add gifts to my recipient's list
+-  **Delete gifts** As a user I can delete gifts from my recipient's wish lists 
 
 <br>
 
