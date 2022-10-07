@@ -11,11 +11,12 @@ import {uploadRecipientImage} from "../service.js";
 //import { Button } from "react-router-dom";
     
 function ListPage (props) {
-   const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
  //  console.log("this is the user",user)
     const { recipientId } = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
     const [display, setDisplay] = useState(false)
+
     // const [giftDetails, setGiftDetails] = useState({})
     //const [recipientGifts, setRecipientGifts] = useState ([])
     const [ name, setName ] = useState("");
@@ -32,6 +33,7 @@ function ListPage (props) {
 
 
     const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
+
 
     const handleRecipientFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -123,9 +125,12 @@ function ListPage (props) {
         .catch((err) => console.log(err));
 
     };
-if(user === null) {
-    return <p>Loading...</p>
-}
+
+
+// if(user === null) {
+//     return <p>Loading...</p>
+// }
+
 
 return (
     <>
@@ -225,8 +230,8 @@ return (
         
     </div>
     
-    
     </>
+
     )
 }
 
