@@ -71,6 +71,7 @@ function ListPage (props) {
 
     useEffect(() => {
         getRecipientInfo();
+        // eslint-disable-next-line
       }, [] );
  
 
@@ -86,6 +87,7 @@ function ListPage (props) {
                 setPrivacy(oneRecipient.privacy)
             })
             .catch((error) => console.log(error));
+            // eslint-disable-next-line
     }, []);
 
 
