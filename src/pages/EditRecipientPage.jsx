@@ -5,7 +5,7 @@ import axios from "axios";
 function EditRecipientPage(props) {
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
-    const [ preferences, setPreferences ] = useState("");
+    const [ preference, setPreference ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
 
     const { recipientId } = useParams();
@@ -19,7 +19,7 @@ function EditRecipientPage(props) {
                 const oneRecipient = response.data;
                 setName(oneRecipient.name);
                 setPersonalDetails(oneRecipient.personalDetails);
-                setPreferences(oneRecipient.preferences);
+                setPreference(oneRecipient.preference);
                 setUnwanted(oneRecipient.unwanted);
             })
             .catch((error) => console.log(error));
@@ -27,7 +27,7 @@ function EditRecipientPage(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const requestBody = { name, personalDetails, preferences, unwanted };
+        const requestBody = { name, personalDetails, preference, unwanted };
         
         axios
         // TODO: will need to check the get route i.e. listPage OR recipientPage 
@@ -68,12 +68,12 @@ function EditRecipientPage(props) {
                 onChange={(e) => setPersonalDetails(e.target.value)}
                 />
 
-                <label>Preferences:</label>
+                <label>Preference:</label>
                 <textarea
                 type="text"
-                name="preferences"
-                value={preferences}
-                onChange={(e) => setPreferences(e.target.value)}
+                name="preference"
+                value={preference}
+                onChange={(e) => setPreference(e.target.value)}
                 />
 
                 <label>Add Past Gifts:</label>

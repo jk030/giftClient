@@ -11,16 +11,17 @@ import {uploadRecipientImage} from "../service.js";
 //import { Button } from "react-router-dom";
     
 function ListPage (props) {
-   const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
  //  console.log("this is the user",user)
     const { recipientId } = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
     const [display, setDisplay] = useState(false)
+
     // const [giftDetails, setGiftDetails] = useState({})
     //const [recipientGifts, setRecipientGifts] = useState ([])
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
-    const [ preferences, setPreferences ] = useState("");
+    const [ preference, setPreference ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
 
     const [privacy, setPrivacy] = useState(true)
@@ -32,6 +33,7 @@ function ListPage (props) {
 
 
     const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
+
 
     const handleRecipientFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -79,7 +81,7 @@ function ListPage (props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const requestBody = { name, personalDetails, preferences, unwanted, imageRecipient, privacy };
+        const requestBody = { name, personalDetails, preference, unwanted, imageRecipient, privacy };
 
         
         axios
@@ -104,7 +106,7 @@ function ListPage (props) {
                 const oneRecipient = response.data;
                 setName(oneRecipient.name);
                 setPersonalDetails(oneRecipient.personalDetails);
-                setPreferences(oneRecipient.preferences);
+                setPreference(oneRecipient.preference);
                 setUnwanted(oneRecipient.unwanted);
                 setPrivacy(oneRecipient.privacy)
             })
@@ -123,9 +125,12 @@ function ListPage (props) {
         .catch((err) => console.log(err));
 
     };
-if(user === null) {
-    return <p>Loading...</p>
-}
+
+
+// if(user === null) {
+//     return <p>Loading...</p>
+// }
+
 
 return (
     <>
@@ -171,9 +176,9 @@ return (
                     <label>Likes:</label>
                     <textarea
                     type="text"
-                    name="preferences"
-                    value={preferences}
-                    onChange={(e) => setPreferences(e.target.value)}
+                    name="preference"
+                    value={preference}
+                    onChange={(e) => setPreference(e.target.value)}
                     />
 
                     <label>Dislikes:</label>
@@ -225,8 +230,8 @@ return (
         
     </div>
     
-    
     </>
+
     )
 }
 
