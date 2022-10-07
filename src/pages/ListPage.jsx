@@ -7,44 +7,26 @@ import { AuthContext } from "../context/auth.context";
 import "../styling/ListPage.css";
 import {uploadRecipientImage} from "../service.js";
 
-
-//import { Button } from "react-router-dom";
     
 function ListPage (props) {
     const { user } = useContext(AuthContext)
- //  console.log("this is the user",user)
     const { recipientId } = useParams();
-    const [recipientInfo, setRecipientInfo] = useState({})
-    const [display, setDisplay] = useState(false)
-
-    // const [giftDetails, setGiftDetails] = useState({})
-    //const [recipientGifts, setRecipientGifts] = useState ([])
+    const [ recipientInfo, setRecipientInfo] = useState({})
+    const [ display, setDisplay] = useState(false)
     const [ name, setName ] = useState("");
     const [ personalDetails, setPersonalDetails ] = useState("");
     const [ preference, setPreference ] = useState("");
     const [ unwanted, setUnwanted ] = useState("");
-
-    const [privacy, setPrivacy] = useState(true)
-
+    const [ privacy, setPrivacy] = useState(true)
     const [ imageRecipient, setImageRecipient ] = useState("");
-    // const [ imageGift, setImageGift ] = useState("")
-    // handles cancel button
     const [ inputValue, setInputValue ] = useState("Value from onChange")
-
-
-    const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
+    const [ edit,setEdit] = useState (true) //use the setEdit only when logged in 
 
 
     const handleRecipientFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
-     
         const uploadData = new FormData();
-     
-        // imageUrl => this name has to be the same as in the model since we pass
-        // req.body to .create() method when creating a new movie in '/api/movies' POST route
         uploadData.append("imageRecipient", e.target.files[0]);
-      
-        
           uploadRecipientImage(uploadData)
           .then(response => {
             console.log("response is: ", response);
@@ -53,11 +35,9 @@ function ListPage (props) {
           })
           .catch(err => console.log("Error while uploading the file: ", err));
       };
-
     const handleCancel = () => {
         setInputValue("")
     }
-    
 
 
     const getRecipientInfo = () => {
@@ -71,7 +51,6 @@ function ListPage (props) {
         .catch((error) => console.log(error));
     };
   
-
     
     const handleDisplay = () => {
         setDisplay(!display);
@@ -80,24 +59,20 @@ function ListPage (props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const requestBody = { name, personalDetails, preference, unwanted, imageRecipient, privacy };
-
-        
         axios
-        // TODO: will need to check the get route i.e. listPage OR recipientPage 
             .put(`${process.env.REACT_APP_API_URL}/api/recipients/${recipientId}`, requestBody)
             .then((response) => {
-                // might need an async await here
                 getRecipientInfo()
                 setEdit(true)
             });
     };
 
+
     useEffect(() => {
         getRecipientInfo();
-        // eslint-disable-next-line
       }, [] );
+ 
 
     useEffect(() => {
         axios
@@ -111,10 +86,9 @@ function ListPage (props) {
                 setPrivacy(oneRecipient.privacy)
             })
             .catch((error) => console.log(error));
-            // eslint-disable-next-line
     }, []);
 
-//--> delete gift route
+
     const deleteGift = (giftId) => {
         console.log(giftId)
         axios
@@ -123,16 +97,10 @@ function ListPage (props) {
             getRecipientInfo()
         })
         .catch((err) => console.log(err));
-
     };
 
 
-// if(user === null) {
-//     return <p>Loading...</p>
-// }
-
-
-return (
+    return (
     <>
 
     <div className="listContainer">
@@ -145,7 +113,9 @@ return (
                     <p className="giftDetailsLabels" >Dislikes: < br /> {recipientInfo.unwanted}</p>
                     {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
                     {edit && user?._id === recipientInfo.user &&  <button onClick={()=> setEdit(false)}>Edit this Recipient</button> }
-                    <button className="hideBtn" onClick={handleDisplay}> { display ? "Hide Form" : "Show Adding Form"}</button>
+
+                    {user?._id === recipientInfo.user && <button className="hideBtn" onClick={handleDisplay}> { display ? "Hide Form" : "Show Adding Form"}</button>}
+
                 </div> 
                 : 
                 <form className="formBackground" onSubmit={handleSubmit}>
