@@ -66,12 +66,15 @@ function ProfilePage(props) {
                 return ( 
                   <div className="ContainerRecipients" key={recipient._id}> 
                       <div className="ContainerDetailsImage"> 
-                      <h4 className="DetailName"> {recipient.name}</h4>
+                      <h4 className="DetailName"> {recipient.name}</h4> 
                       <img className="imageRecipient" src={recipient.imageRecipient} alt="Recipient"/> <br />  
                       </div>
-
+                    <div style={{display: "flex", justifyContent:'space-around'}}>
+                    {!recipient.privacy? <p id="lastMinute" style={{ textAlign: 'right'}} >private</p> : <p id="lastMinute"  style={{ textAlign: 'right'}}>public</p>}
                     <Link to={`/listPage/${recipient._id}`}><button className="btnProfilePage">See Gift List</button></Link>
                     {user._id === userId &&  <button className="btnProfilePage" onClick={()=> deleteRecipient(recipient._id)}>Delete Recipient</button>}
+                    </div>
+                  
                  </div>     
 
            )

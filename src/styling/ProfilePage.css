@@ -105,4 +105,9 @@
     font-size: 15px;
     font-weight: 500;
   }
+
+  #lastMinute{
+    display:flex;
+    justify-self: flex-start;
+  }
   
