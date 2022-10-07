@@ -113,7 +113,9 @@ function ListPage (props) {
                     <p className="giftDetailsLabels" >Dislikes: < br /> {recipientInfo.unwanted}</p>
                     {privacy ?<p>This List is Public</p> : <p>This list is Private</p>}
                     {edit && user?._id === recipientInfo.user &&  <button onClick={()=> setEdit(false)}>Edit this Recipient</button> }
+
                     {user?._id === recipientInfo.user && <button className="hideBtn" onClick={handleDisplay}> { display ? "Hide Form" : "Show Adding Form"}</button>}
+
                 </div> 
                 : 
                 <form className="formBackground" onSubmit={handleSubmit}>
