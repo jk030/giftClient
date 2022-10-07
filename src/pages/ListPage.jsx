@@ -11,11 +11,12 @@ import {uploadRecipientImage} from "../service.js";
 //import { Button } from "react-router-dom";
     
 function ListPage (props) {
-   const { user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
  //  console.log("this is the user",user)
     const { recipientId } = useParams();
     const [recipientInfo, setRecipientInfo] = useState({})
     const [display, setDisplay] = useState(false)
+
     // const [giftDetails, setGiftDetails] = useState({})
     //const [recipientGifts, setRecipientGifts] = useState ([])
     const [ name, setName ] = useState("");
@@ -32,6 +33,7 @@ function ListPage (props) {
 
 
     const [edit,setEdit] = useState (true) //use the setEdit only when logged in 
+
 
     const handleRecipientFileUpload = (e) => {
         console.log("The file to be uploaded is: ", e.target.files[0]);
@@ -123,9 +125,12 @@ function ListPage (props) {
         .catch((err) => console.log(err));
 
     };
-if(user === null) {
-    return <p>Loading...</p>
-}
+
+
+// if(user === null) {
+//     return <p>Loading...</p>
+// }
+
 
 return (
     <>
@@ -143,8 +148,8 @@ return (
                     <button className="hideBtn" onClick={handleDisplay}> { display ? "Hide Form" : "Show Adding Form"}</button>
                 </div> 
                 : 
-                <form onSubmit={handleSubmit}>
-                
+                <form className="formBackground" onSubmit={handleSubmit}>
+                <h3>Edit Recipient</h3>
                     <label>Upload Image:</label>
                     <input
                     type="file"
@@ -168,7 +173,7 @@ return (
                     onChange={(e) => setPersonalDetails(e.target.value)}
                     />
 
-                    <label>Preference:</label>
+                    <label>Likes:</label>
                     <textarea
                     type="text"
                     name="preference"
@@ -176,7 +181,7 @@ return (
                     onChange={(e) => setPreference(e.target.value)}
                     />
 
-                    <label>Add Past Gifts:</label>
+                    <label>Dislikes:</label>
                     <textarea
                     type="text"
                     name="unwanted"
@@ -190,25 +195,26 @@ return (
                       <button type="submit" onClick={handleCancel} value={inputValue}>Cancel</button>
                 </form>
         }
+       
 
         <ul className="cards"> 
+        <h3 className="headlineListPage">List : </h3>
             {recipientInfo?.gifts?.length !== 0 && recipientInfo?.gifts?.map(gift => {
                 return <li key={gift._id} className="ContainerGift">
- 
                             <div className="ContainerDetailsImage"> 
-                                <h2 className="giftDetailsLabels"> Gift: {gift.title}</h2> 
-                                <img className="imageRecipient"  src={gift.imageGift} alt="Gift" />
+                                <h2 className="giftDetailsLabels"> {gift.title}</h2> 
+                                <img className="imageGift"  src={gift.imageGift} alt="Gift" />
                                 <a href={gift.link} className="buyGiftLink"><p> Click here to buy gift </p></a>
                             </div>
 
                             <div className="giftDetails">
                                 <div className="main">
-                                    <p> Price Span: {gift.priceSpan}</p> 
-                                    <p> Occasion: {gift.occasion}</p>
+                                    <p> <strong>Price Span:</strong> {gift.priceSpan}</p> 
+                                    <p> <strong>Occasion:</strong> {gift.occasion}</p>
                                 </div>
 
                                 <div className="footer">
-                                    <p> Additional Notes: {gift.notes}</p>
+                                    <p>  <strong>Additional Notes: </strong><br/>{gift.notes}</p>
                                 </div> 
                             </div>
                        {user._id === recipientInfo.user &&  <button onClick={()=> deleteGift(gift._id) }>Delete</button>}
@@ -216,14 +222,16 @@ return (
                         </li>
                         
             })}
-        </ul>
-    </div>
-    
-    {user._id === recipientInfo.user && display && 
+            {user._id === recipientInfo.user && display && 
     <div className="ContainerAddGift">
         <AddGift recipientId={recipientId}  getRecipientInfo={getRecipientInfo}/>
     </div>} 
+        </ul>
+        
+    </div>
+    
     </>
+
     )
 }
 

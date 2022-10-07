@@ -61,10 +61,10 @@ function AddRecipient(props) {
   return (
     <div className="AddRecipient">
 
-      <h3>Add Recipient</h3>
+     
       
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-
+      <h3>Add Recipient</h3>
         <label className="Details2" >Name:</label>
         <input
           type="text"
@@ -81,7 +81,7 @@ function AddRecipient(props) {
           onChange={(e) => setPersonalDetails(e.target.value)}
         />
 
-        <label className="Details2" >Preference:</label>
+        <label className="Details2" >Likes:</label>
         <input
           type="text"
           name="preference"
@@ -89,7 +89,7 @@ function AddRecipient(props) {
           onChange={(e) => setPreference(e.target.value)}
         />
 
-        <label className="Details2" >Things they don't want:</label>
+        <label className="Details2" >Dislikes:</label>
         <input
           type="text"
           name="unwanted"
