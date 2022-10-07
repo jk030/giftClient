@@ -27,24 +27,23 @@ The focus of GiftMaster is making gift-giving simpler and reducing gift anxiety.
 # Client / Frontend
 
 ## React Router Routes (React App)
-| Path                      | Component                      | Permissions | Behavior                                                     |
-| ------------------------- | --------------------           | ----------- | ------------------------------------------------------------ |
-| `/`                       |                      | public `<Route>`            | Home page                                        |
-| `/signup`                 | SignupPage                     | anon only  `<AnonRoute>`    | Signup form, link to login, navigate to homepage after signup |
-| `/login`                  | LoginPage                      | anon only `<AnonRoute>`     | Login form, link to signup, navigate to homepage after login  |
-| `/logout`                 | n/a                            | user only `<PrivateRoute>`  | Navigate to homepage after logout, expire session             |
-| `/backlog/series`         | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all tv series on backlog                                |
-| `/backlog/films`          | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all films on backlog                                    |
-| `/backlog/games`          | NavBar, ElementList, FooterBar | user only `<PrivateRoute>`  | Shows all games on backlog                                    |
-| `/search/series`          | SearchForm, SearchResults      | user only  `<PrivateRoute>` | Search a tv series to be added                                |
-| `/search/films`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a film to be added                                     |
-| `/search/games`           | SearchForm, SearchResults      | user only `<PrivateRoute>`  | Search a game to be added                                     |
-| `/add/:id`                | ElementInfo                    | user only `<PrivateRoute>`  | Add an element to the backlog                                 |
-| `/profile`                | Profile, Stats                 | user only  `<PrivateRoute>` | Check profile with stat information                           |
-| `/done/series`            | Done list for Series           | user only  `<PrivateRoute>` | Shows all tv series finished                                  |
-| `/done/films`             | Done list for films            | user only `<PrivateRoute>`  | Shows all films finished                                      |
-| `/done/games`             | Done list for games            | user only `<PrivateRoute>`  | Shows all videogames finished                                 |
-          
+
+- / -Homepage
+- /auth/signup - Signup form
+- /auth/login -Login form
+- /profile/:id - Profile page of the logged in User
+- /listPage/:id - Recipient details and gift details
+
+## Pages
+
+- Home Page (public)
+- Sign in Page (anon only)
+- Log in Page (anon only)
+- Recipient Create (user only)
+- Gift Create (user only)
+- List page (Recipient) Detail Page (user and public)
+- My Profile Page (user only)
+- 404 Page (public)
 
 ## Components
 
@@ -69,6 +68,8 @@ The focus of GiftMaster is making gift-giving simpler and reducing gift anxiety.
 - AddRecipient
 
 - AddGift
+
+- AuthContext
 
 
 ## Services
@@ -161,28 +162,49 @@ Gift model
 
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL                         | Request Body                 | Success status | Error Status | Description                                                  |
-| ----------- | --------------------------- | ---------------------------- | -------------- | ------------ | ------------------------------------------------------------ |
-| GET         | `/`           | Home Page                | 200            | 404          | Return home page           |
-| GET         | `/auth/profile`           | Saved session                | 200            | 404          | Check if user is logged in and return profile page           |
-| POST        | `/auth/signup`                | {username, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`                 | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session    |
-| POST        | `/auth/logout`                | (empty)                      | 204            | 400          | Logs out the user                                            |
-| GET        | `/auth/verify`                 | {JWT}  |                | 400          | Used to verify JWT stored on the client                                               |
-| POST         | `/recipients/upload`             |                              |                | 400          | Upload recipient image                                           |
-| POST         | `/recipients`              |                              |                |              | Creates a new recipient                                           |
-| GET         | `/recipients`              |                              |                |              | Retrieves all recipients                                          |
-| GET         | `/recipients/:id`                        |                              |200            | 400          | Retrieves a specific recipient by Id                                        |
-| PUT         | `/recipients/:id`                 |                              | 200            | 400          | Edit recipient                                                 |
-| DELETE      | `/recipients/:id`                 |                              | 201            | 400          | Deletes recipient                                               |
-| POST         | `/gifts/upload`             |                              |                | 400          | Upload gift image                                           |
-| POST         | `/gifts`              |                              |                |              | Creates a new gift                                           |
-| GET         | `/gifts`              |                              |                |              | Retrieves all gifts                                          |
-| GET         | `/gifts/:id`                        |                              |            | 400          | Retrieves a specific gift by Id                                        |
-| PUT         | `/gifts/:id`                 |                              | 200            | 400          | Edit gift                                                 |
-| DELETE      | `/gifts/:id`                 |                              | 201            | 400          | Deletes gift                                               |
-
-
+- GET `/` Home Page
+- POST `/auth/signup`
+  - body:
+    - username
+    - email
+    - password
+- POST `/auth/login`
+  - body: 
+    - username
+    - password
+- POST `/auth/verify`
+  - body:
+    - JWT
+- GET `/auth/profile`
+- GET `/auth/logout`
+- POST `/recipients/upload
+- POST `recipients`
+  - body:
+    - name
+    - personalDetails
+    - userId
+    - imageRecipient
+    - preference
+    - unwanted
+    - privacy
+- GET `/recipients`
+- GET `/recipients/:recipeintId`
+- PUT `/recipients/:recipientId`
+- DELETE `/recipients/:recipientId`
+- POST `/gifts/upload`
+- POST `/gifts`
+  - body:
+    - title
+    - priceSpan
+    - occasion
+    - imageGift
+    - link
+    - notes
+    - recipientId
+- GET `/gifts`
+- GET `/gifts/:giftId`
+- PUT `/gifts/:giftId`
+- DELETE `/gifts/:giftId`
 
 <br>
 
